@@ -29,10 +29,10 @@ class TestCalculator(unittest.TestCase):
 
     def test_multiplication(self):
         conds = [
-            Conditions(1, 2, -1),
+            Conditions(1, 2, 2),
             Conditions(0, 0, 0),
             Conditions(-2, 2, -4),
-            Conditions(-2, -2, 0),
+            Conditions(-2, -2, 4),
         ]
 
         for c in conds:
@@ -67,7 +67,7 @@ class TestCalculator(unittest.TestCase):
         ]
 
         for c in conds:
-            self.assertEqual(self.calculator.adsolute(c[0]), [1])
+            self.assertEqual(self.calculator.adsolute(c[0]), c[1])
 
     def test_degree(self):
         conds = [
@@ -86,7 +86,7 @@ class TestCalculator(unittest.TestCase):
         ]
 
         for c in conds:
-            self.assertEqual(self.calculator.ln(c[0]), [1])
+            self.assertEqual(self.calculator.ln(c[0]), c[1])
 
     def test_log(self):
         conds = [
@@ -99,12 +99,12 @@ class TestCalculator(unittest.TestCase):
 
     def test_sqrt(self):
         conds = [
-            (4, 2),
+            (16, 4),
             (0, 0),
         ]
 
         for c in conds:
-            self.assertEqual(self.calculator.sqrt(c[0]), [1])
+            self.assertEqual(self.calculator.sqrt(c[0]), c[1])
 
     def test_nth_root(self):
         conds = [
@@ -116,7 +116,7 @@ class TestCalculator(unittest.TestCase):
         for c in conds:
             self.assertEqual(self.calculator.nth_root(c.x1, c.x2), c.y)
 
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ZeroDivisionError):
             self.calculator.nth_root(8, 0)
 
 if __name__ == "__main__":

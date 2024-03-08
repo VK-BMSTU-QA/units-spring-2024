@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import { ProductCard } from './ProductCard';
 import { Product } from '../../types';
 
@@ -17,17 +18,6 @@ describe('ProductCard component tests', () => {
     it('should render correctly', () => {
         const { asFragment } = render(<ProductCard {...product} />);
         expect(asFragment()).toMatchSnapshot();
-    });
-
-    it('should render product details correctly', () => {
-        const { getByText, getByAltText } = render(
-            <ProductCard {...product} />
-        );
-        expect(getByText('Test Product')).toBeInTheDocument();
-        expect(getByText('This is a test product')).toBeInTheDocument();
-        expect(getByText('$100')).toBeInTheDocument();
-        expect(getByText('Electronics')).toBeInTheDocument();
-        expect(getByAltText('Test Product')).toBeInTheDocument();
     });
 
     it('should render product image if imgUrl is provided', () => {

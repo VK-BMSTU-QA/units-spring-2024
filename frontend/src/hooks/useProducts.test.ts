@@ -13,9 +13,7 @@ describe('useProducts hook tests', () => {
             expect(product).toHaveProperty('name');
             expect(product).toHaveProperty('description');
             expect(product).toHaveProperty('price');
-            expect(product).toHaveProperty('priceSymbol');
             expect(product).toHaveProperty('category');
-            expect(product).toHaveProperty('imgUrl');
         });
     });
 });

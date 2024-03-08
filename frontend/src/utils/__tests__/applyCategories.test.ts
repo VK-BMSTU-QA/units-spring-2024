@@ -1,4 +1,5 @@
 import type { Category, Product } from '../../types';
+
 import { applyCategories } from '../applyCategories';
 
 const products: Product[] = [
@@ -21,7 +22,9 @@ const products: Product[] = [
 describe('test applyCategories function', () => {
     it('should return products filtered by category ', () => {
         const categories: Category[] = ['Электроника'];
-        expect(applyCategories(products, categories)).toBe(products[0]);
+        expect(applyCategories(products, categories)).toStrictEqual(
+            products.filter((product) => categories.includes(product.category))
+        );
     });
 });
 
