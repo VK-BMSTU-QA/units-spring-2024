@@ -27,9 +27,15 @@ jest.mock('../../../hooks', () => ({
 }));
 
 jest.mock('../../../utils', () => ({
-    ...jest.requireActual('../../../utils'),
-    updateCategories: jest.fn(),
+    applyCategories: jest.fn((products, categories) => products),
+    updateCategories: jest.fn((selectedCategories, clickedCategory) => [
+        ...selectedCategories,
+        clickedCategory,
+    ]),
+    getPrice: jest.fn((price, priceSymbol) => `${price} ${priceSymbol}`),
 }));
+
+afterEach(jest.clearAllMocks);
 
 describe('Main page test', () => {
     it('should render correctly', () => {
