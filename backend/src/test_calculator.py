@@ -43,7 +43,6 @@ class TestCalculator(unittest.TestCase):
 
     def test_nth_root(self):
         self.assertEqual(self.calculator.nth_root(8, 3), 2)
-        self.assertEqual(self.calculator.nth_root(1, 0), 2)
         with self.assertRaises(ZeroDivisionError):
             self.calculator.nth_root(1, 0)
 
