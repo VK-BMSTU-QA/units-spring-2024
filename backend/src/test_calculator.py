@@ -94,7 +94,6 @@ class TestCalculator(unittest.TestCase):
         testCases = [
             {"x": 100, "n": 10, "result": 2},
             {"x": 8, "n": 2, "result": 3},
-            # Add more test cases as needed
         ]
         for tc in testCases:
             self.assertAlmostEqual(self.calculator.log(tc["x"], tc["n"]), tc["result"])
