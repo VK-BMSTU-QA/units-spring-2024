@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ProductCard } from './ProductCard';
-import { useProducts } from '../../hooks';
+import { ProductCard } from '../ProductCard';
+import { useProducts } from '../../../hooks';
 
 afterEach(jest.clearAllMocks);
-describe('Categories test', () => {
+describe('ProductCard test', () => {
     it('should render correctly', () => {
         const products = useProducts();
         const rendered = render(<ProductCard key={products[0].id} {...products[0]} />);

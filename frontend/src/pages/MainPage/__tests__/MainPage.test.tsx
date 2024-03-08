@@ -1,10 +1,19 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { MainPage } from './MainPage';
+import { MainPage } from '../MainPage';
 
-jest.mock('../../utils/updateCategories');
-import { updateCategories } from '../../utils/updateCategories';
+jest.mock('../../../utils', () => ({
+    applyCategories: jest.fn((products, categories) => products),
+    getPrice: jest.fn((price, priceSymbol) => `${price} ${priceSymbol}`),
+    updateCategories: jest.fn((selectedCategories, clickedCategory) => [
+        ...selectedCategories,
+        clickedCategory,
+    ]),
+}));
+
+
+import { updateCategories } from '../../../utils';
 
 afterEach(jest.clearAllMocks);
 describe('Main page test', () => {

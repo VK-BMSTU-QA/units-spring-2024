@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react";
-import { useCurrentTime } from "./useCurrentTime";
+import { useCurrentTime } from "../useCurrentTime";
 
 
 jest.useFakeTimers();

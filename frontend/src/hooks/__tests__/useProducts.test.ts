@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import { useProducts } from "./useProducts";
+import { useProducts } from "../useProducts";
 
 
 jest.useFakeTimers();

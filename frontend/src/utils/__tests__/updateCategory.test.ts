@@ -11,4 +11,19 @@ describe('test update categories function', () => {
     ] as [Category[], Category, Category[]][])('should return correct categories', (currentCategories: Category[], changedCategories: Category, expected: Category[]) => {
         expect(updateCategories(currentCategories, changedCategories)).toStrictEqual(expected);   
     });
+
+    it('should remove a category if it is in the list', () => {
+
+        const changedCategory: Category = 'Электроника';
+        const result = updateCategories(['Электроника', 'Одежда'], changedCategory);
+
+        expect(result).toEqual(['Одежда']);
+    });
+
+    it('should handle adding a category to an empty list', () => {
+        const changedCategory: Category = 'Одежда';
+        const result = updateCategories([], changedCategory);
+
+        expect(result).toEqual([changedCategory]);
+    });
 });
