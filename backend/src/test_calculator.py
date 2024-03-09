@@ -35,6 +35,8 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.division(2, 2), 1)
         self.assertEqual(self.calculator.division(1, 2), 0.5)
         self.assertEqual(self.calculator.division(1, 0.5), 2)
+        self.assertEqual(self.calculator.division(0.25, 0.5), 0.5)
+        self.assertEqual(self.calculator.division(0.5, 2), 0.25)
         self.assertEqual(self.calculator.division(1, -1), -1)
 
     def test_abs(self):
@@ -51,6 +53,7 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.degree(-2, 2), 4)
         self.assertEqual(self.calculator.degree(-2, 3), -8)
         self.assertEqual(self.calculator.degree(4, 0.5), 2)
+        self.assertEqual(self.calculator.degree(0.25, 0.5), 0.5)
         self.assertEqual(self.calculator.degree(0, 0), 1)
 
 
