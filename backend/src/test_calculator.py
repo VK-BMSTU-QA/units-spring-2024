@@ -105,7 +105,7 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.sqrt(4), 2)
         self.assertEqual(self.calculator.sqrt(1), 1)
         self.assertEqual(self.calculator.sqrt(0), 0)
-        self.assertEqual(self.calculator.sqrt(-9), 3)
+        self.assertEqual(self.calculator.sqrt(-9), -3)
 
     def test_sqrt_negative(self):
         with self.assertRaises(TypeError):
