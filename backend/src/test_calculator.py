@@ -26,9 +26,9 @@ class TestCalculator(unittest.TestCase):
     def test_div(self):
         self.assertEqual(self.calculator.division(4, 2), 2)
         # типа проверяем деление с конечной точнотью 
-        self.assertEqual(round(self.calculator.division(4, 3), 2), round(4/3,2))
-        self.assertEqual(round(self.calculator.division(4, 3), 2), round(4/3,2))
-        self.assertEqual(self.calculator.division(4, 0), None)
+        self.assertAlmostEqual(self.calculator.division(4, 3), 4/3, places=2)
+        self.assertAlmostEqual(self.calculator.division(4, 3), 4/3, places=2)
+        self.assertIsNone(self.calculator.division(4, 0))
 
     def test_abs(self):
         self.assertEqual(self.calculator.adsolute(4), 4)
