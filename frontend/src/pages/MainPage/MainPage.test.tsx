@@ -4,11 +4,13 @@ import * as productsHook from '../../hooks/useProducts';
 import * as applyCategoriesUtil from '../../utils/applyCategories';
 import * as updateCategoriesUtil from '../../utils/updateCategories';
 
-import { Product } from '../../types';
+import { Category, Product } from '../../types';
 import { act, render, screen, fireEvent } from '@testing-library/react';
 import { MainPage } from './MainPage';
 
 describe('test main page component', () => {
+    const categories: Category[] = ['Для дома', 'Одежда', 'Электроника'];
+
     const products: Product[] = [
         {
             id: 1,
@@ -79,22 +81,6 @@ describe('test main page component', () => {
         expect(screen.queryByText('00:00:01')).not.toBeNull();
     });
 
-    it('should filter products when category clicked', () => {
-        render(<MainPage />);
-        products.forEach(({ name }) =>
-            expect(screen.queryByText(name)).not.toBeNull()
-        );
-
-        fireEvent.click(screen.getAllByText('Одежда')[0]);
-        products.forEach(({ name, category }) => {
-            if (category == 'Одежда') {
-                expect(screen.queryByText(name)).not.toBeNull();
-            } else {
-                expect(screen.queryByText(name)).toBeNull();
-            }
-        });
-    });
-
     it('should call once useProducts when render', () => {
         expect(mockUseProducts).not.toBeCalled();
         render(<MainPage />);
@@ -107,17 +93,37 @@ describe('test main page component', () => {
         expect(mockApplyCategories).toBeCalledTimes(1);
     });
 
-    it('should call applyCategories on category click', () => {
-        render(<MainPage />);
-        expect(mockApplyCategories).toBeCalledTimes(1);
-        fireEvent.click(screen.getAllByText('Одежда')[0]);
-        expect(mockApplyCategories).toBeCalledTimes(2);
-    });
+    describe.each(categories)('test %s category', (testingCategory) => {
+        it('should filter products when clicked', () => {
+            render(<MainPage />);
 
-    it('should call updateCategories on category click', () => {
-        render(<MainPage />);
-        expect(mockUpdateCategories).not.toBeCalled();
-        fireEvent.click(screen.getAllByText('Одежда')[0]);
-        expect(mockUpdateCategories).toBeCalledTimes(1);
+            products.forEach(({ name }) =>
+                expect(screen.queryByText(name)).not.toBeNull()
+            );
+
+            fireEvent.click(screen.getAllByText(testingCategory)[0]);
+
+            products.forEach(({ name, category }) => {
+                if (category == testingCategory) {
+                    expect(screen.queryByText(name)).not.toBeNull();
+                } else {
+                    expect(screen.queryByText(name)).toBeNull();
+                }
+            });
+        });
+
+        it('should call applyCategories on click', () => {
+            render(<MainPage />);
+            expect(mockApplyCategories).toBeCalledTimes(1);
+            fireEvent.click(screen.getAllByText(testingCategory)[0]);
+            expect(mockApplyCategories).toBeCalledTimes(2);
+        });
+
+        it('should call updateCategories on click', () => {
+            render(<MainPage />);
+            expect(mockUpdateCategories).not.toBeCalled();
+            fireEvent.click(screen.getAllByText(testingCategory)[0]);
+            expect(mockUpdateCategories).toBeCalledTimes(1);
+        });
     });
 });
