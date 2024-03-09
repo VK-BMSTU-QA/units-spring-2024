@@ -40,21 +40,4 @@ describe('Categories test', () => {
         expect(onCategoryClick).toHaveBeenCalledTimes(1);
     });
     
-    // it('should change category class when clicked', () => {
-        
-    //     const selectedCategories: Category[] = [];
-    //     const spy = jest.spyOn(selectedCategories, 'includes');
-    //     spy.mockReturnValue(false);
-        
-    //     const rendered = render(
-    //         <Categories
-    //             selectedCategories={selectedCategories}
-    //             onCategoryClick={() => {}}
-    //         />
-    //     );
-        
-    //     spy.mockReturnValue(true);
-    //     fireEvent.click(rendered.getByText('Одежда'));
-    //     expect(rendered.getByText('Одежда')).toHaveClass('categories__badge_selected');
-    // });
 });

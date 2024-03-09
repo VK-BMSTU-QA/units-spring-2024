@@ -63,13 +63,6 @@ describe('MainPage test', () => {
         expect(getByText('IPhone 14 Pro')).toBeInTheDocument();
     });
 
-    // it('should add all products', () => {
-    //     const rendered = render(<MainPage />);
-        
-    //     expect(rendered.getByText('IPhone 14 Pro')).toBeInTheDocument();
-    //     expect(rendered.getByText('Костюм гуся')).toBeInTheDocument();
-    //     expect(rendered.getByText('Настольная лампа')).toBeInTheDocument();
-    // });
     
     it('should call click handler when category clicked', () => {
         const rendered = render(<MainPage />);
