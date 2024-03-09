@@ -8,4 +8,5 @@ describe('test useCurrentTime function', () => {
         const { result } = renderHook(() => useCurrentTime());
         expect(result.current).toBe(new Date().toLocaleTimeString('ru-RU'));
     });
+    jest.useRealTimers();
 });
