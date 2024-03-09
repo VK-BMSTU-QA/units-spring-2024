@@ -1,5 +1,6 @@
 import unittest
-from calculator import Calculator
+from src.calculator import Calculator
+
 
 class TestCalculator(unittest.TestCase):
 
@@ -22,13 +23,13 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.adsolute(-100), 100)
 
     def test_degree(self):
-        self.assertEqual(self.calculator.degree(2,3), 8)
+        self.assertEqual(self.calculator.degree(2, 3), 8)
 
     def test_ln(self):
         self.assertEqual(self.calculator.ln(1), 0)
 
     def test_log(self):
-        self.assertEqual(self.calculator.log(8,2), 3)
+        self.assertEqual(self.calculator.log(8, 2), 3)
 
     def test_sqrt(self):
         self.assertEqual(self.calculator.sqrt(9), 3)
@@ -37,7 +38,8 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.nth_root(64, 2), 8)
 
     def test_multiply(self):
-        self.assertEqual(self.calculator.multiplication(8,8), 64)
+        self.assertEqual(self.calculator.multiplication(8, 8), 64)
+
 
 if __name__ == "__main__":
     unittest.main()
