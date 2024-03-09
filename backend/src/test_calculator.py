@@ -10,7 +10,6 @@ class Conditions:
         self.y = y
 
 
-# Создание списка структур "Точка"
 class TestCalculator(unittest.TestCase):
 
     def setUp(self):
