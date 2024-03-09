@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Product card test should render correctly 1`] = `
+exports[`ProductСard test should render correctly 1`] = `
 <DocumentFragment>
   <div
     class="product-card"

@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ProductCard } from './ProductCard';
-import { Product } from '../../types';
 import { getPrice } from '../../utils';
+import { Product } from '../../types';
+import { ProductCard } from './ProductCard';
 
 const testProduct: Product = {
     id: 1,
@@ -16,7 +16,6 @@ const testProduct: Product = {
 };
 
 jest.mock('../../utils/getPrice', () => ({
-    __esModule: true,
     getPrice: jest.fn(() => '999 $'),
 }));
 
