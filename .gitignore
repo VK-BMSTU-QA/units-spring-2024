@@ -24,4 +24,10 @@ dist-ssr
 *.sln
 *.sw?
 
+
 test-report.html
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
