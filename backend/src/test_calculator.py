@@ -42,6 +42,7 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.ln(1), 0.0)  
         self.assertAlmostEqual(self.calculator.ln(math.e), 1.0) 
         self.assertEqual(self.calculator.ln(10), math.log(10))
+        self.assertRaises(ValueError, self.calculator.ln, -1)
 
     def test_log(self):
         self.assertAlmostEqual(self.calculator.log(8, 2), 3.0) 

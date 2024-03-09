@@ -66,6 +66,40 @@ describe('applyCategories', () => {
           category: 'Электроника'
         }
       ]);
+
+      expect(applyCategories(products, ['Одежда'])).toEqual([
+        {
+          id: 3,
+          name: 'Штаны',
+          description: 'Описание продукта 3',
+          price: 150,
+          category: 'Одежда'
+        },
+        {
+          id: 6,
+          name: 'Футболка',
+          description: 'Описание продукта 6',
+          price: 150,
+          category: 'Одежда'
+        }
+      ]);
+
+      expect(applyCategories(products, ['Для дома'])).toEqual([
+        {
+          id: 2,
+          name: 'Швабра',
+          description: 'Описание продукта 2',
+          price: 200,
+          category: 'Для дома'
+        },
+        {
+          id: 5,
+          name: 'Мыло',
+          description: 'Описание продукта 5',
+          price: 200,
+          category: 'Для дома'
+        }
+      ]);
     });
   
     it('should return all products if no categories are specified', () => {
