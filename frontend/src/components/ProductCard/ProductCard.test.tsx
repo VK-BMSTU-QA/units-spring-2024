@@ -3,6 +3,12 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ProductCard } from './ProductCard';
 import type { Product } from '../../types';
+import { getPrice } from '../../utils';
+
+jest.mock('../../utils/getPrice', () => ({
+    getPrice: jest.fn(),
+}));
+
 
 afterEach(jest.clearAllMocks);
 describe('ProductCard test', () => {
@@ -16,6 +22,7 @@ describe('ProductCard test', () => {
 
     it('should render product information correctly', () => {
         const rendered = render(<ProductCard {...product} />);
+        expect(getPrice).toHaveBeenCalledTimes(1);
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 

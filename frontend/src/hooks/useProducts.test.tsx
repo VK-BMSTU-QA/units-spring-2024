@@ -7,18 +7,12 @@ describe('useProducts', () => {
     expect(products).toHaveLength(4);
   });
 
-  it('ensures each product has an id, name, and description', () => {
+  it('ensures each product to be defined', () => {
     const products = useProducts();
     products.forEach((product) => {
       expect(product.id).toBeDefined();
       expect(product.name).toBeDefined();
       expect(product.description).toBeDefined();
-    });
-  });
-
-  it('ensures each product has a price and category', () => {
-    const products = useProducts();
-    products.forEach((product) => {
       expect(product.price).toBeDefined();
       expect(product.category).toBeDefined();
     });
