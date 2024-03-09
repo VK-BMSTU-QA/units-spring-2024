@@ -41,12 +41,12 @@ const products: Product[] = [
 
 describe('test applyCategories', () => {
     it('should return same products on empty categories', () => {
-        expect(applyCategories(product, [])).toContain(product[0]);
+        expect(applyCategories(product, [])).toContainEqual(product[0]);
     });
     it('should apply categories', () => {
-        expect(applyCategories(products, ['Электроника'])).toContain(product[0]);
-        expect(applyCategories(products, ['Для дома'])).toContain(product[1]);
-        expect(applyCategories(products, ['Одежда'])).toContain(product[2]);
+        expect(applyCategories(products, ['Электроника'])).toContainEqual(products[0]);
+        expect(applyCategories(products, ['Для дома'])).toContainEqual(products[1]);
+        expect(applyCategories(products, ['Одежда'])).toContainEqual(products[2]);
         expect(applyCategories(products, ['Одежда', 'Электроника', 'Для дома']).length).toBe(3);
     });
 });
