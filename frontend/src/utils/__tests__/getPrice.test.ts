@@ -38,7 +38,7 @@ describe("test updateCategories function", () => {
             priceSymbol: "₽" as PriceSymbol,
             expected: "не\xa0число ₽",
         },
-      ])('updateCategories($currentCategories, $categories)', ({price, priceSymbol, expected}) => {
+      ])('updateCategories($price, $priceSymbol)', ({price, priceSymbol, expected}) => {
         expect(getPrice(price, priceSymbol)).toStrictEqual(expected);
       });
 });

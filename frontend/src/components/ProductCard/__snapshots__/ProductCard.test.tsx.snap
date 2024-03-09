@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard test should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="product-card"
+  >
+    <div
+      class="product-card__text"
+    >
+      <h2
+        class="product-card__name"
+      >
+        my product
+      </h2>
+      <div
+        class="product-card__description"
+      >
+        description of product
+      </div>
+      <h1
+        class="product-card__price"
+      >
+        1 000 ₽
+      </h1>
+      <div
+        class="product-card__category"
+      >
+        Одежда
+      </div>
+    </div>
+    <img
+      alt="my product"
+      class="product-card__image"
+      src="imgurl.png"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ProductCard test should render correctly without imgUrl 1`] = `
+<DocumentFragment>
+  <div
+    class="product-card"
+  >
+    <div
+      class="product-card__text"
+    >
+      <h2
+        class="product-card__name"
+      >
+        my product
+      </h2>
+      <div
+        class="product-card__description"
+      >
+        description of product
+      </div>
+      <h1
+        class="product-card__price"
+      >
+        1 000 ₽
+      </h1>
+      <div
+        class="product-card__category"
+      >
+        Одежда
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
