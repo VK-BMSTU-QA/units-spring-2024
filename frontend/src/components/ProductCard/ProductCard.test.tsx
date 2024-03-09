@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ProductCard } from './ProductCard';
-import {Category, PriceSymbol} from "../../types";
+import { Category, PriceSymbol } from '../../types';
 
 const mockProduct = {
     id: 1,
