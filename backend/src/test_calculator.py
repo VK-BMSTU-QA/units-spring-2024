@@ -85,6 +85,10 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.ln(math.e ** -10), -10)
         self.assertEqual(self.calculator.ln(1), 0)
 
+    def test_ln_with_zero(self):
+        with self.assertRaises(ValueError):
+            self.calculator.ln(0)
+
     def test_ln_with_string(self):
         with self.assertRaises(TypeError):
             self.calculator.ln("string")
@@ -105,9 +109,13 @@ class TestCalculator(unittest.TestCase):
 
     def test_log_with_zero(self):
         with self.assertRaises(ValueError):
+            self.calculator.log(10, 0)
+
+    def test_log_with_zero_base(self):
+        with self.assertRaises(ValueError):
             self.calculator.log(0, 2)
 
-    def test_log_with_negative(self):
+    def test_log_with_negative_base(self):
         with self.assertRaises(ValueError):
             self.calculator.log(-10, 2)
 
