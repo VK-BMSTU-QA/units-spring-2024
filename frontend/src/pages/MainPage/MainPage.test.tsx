@@ -47,7 +47,7 @@ describe('MainPage', () => {
     it('should render correctly with category on click', () => {
         const rendered = render(<MainPage />);
 
-        const categoryButton = rendered.getByText('Электроника', {
+        const categoryButton = rendered.getByText('Одежда', {
             selector: '.categories__badge',
         });
 
