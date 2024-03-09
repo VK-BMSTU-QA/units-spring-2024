@@ -17,7 +17,7 @@ afterEach(jest.clearAllMocks);
 describe('Main page test', () => {
     beforeAll(() => {
         jest.useFakeTimers();
-        jest.setSystemTime(new Date('01 June 2001 00:00:00').getTime())
+        jest.setSystemTime(new Date('01 June 2001 0:00:00').getTime())
       });
 
     afterAll(() => {
