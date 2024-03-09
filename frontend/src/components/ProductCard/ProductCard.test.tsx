@@ -5,9 +5,10 @@ import { ProductCard } from './ProductCard';
 import { useProducts } from '../../hooks';
 
 afterEach(jest.clearAllMocks);
-describe('ProductCard test', () => {
+describe('Product Card test', () => {
     it('should render correctly', () => {
         const products = useProducts();
+        
         const rendered = render(<ProductCard key={products[0].id} {...products[0]} />);
 
         expect(rendered.asFragment()).toMatchSnapshot();

@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MainPage } from '../MainPage';
+import { updateCategories } from '../../utils';
 
 jest.mock('../../utils', () => ({
     applyCategories: jest.fn((products, categories) => products),
@@ -12,14 +13,11 @@ jest.mock('../../utils', () => ({
     ]),
 }));
 
-
-import { updateCategories } from '../../utils';
-
 afterEach(jest.clearAllMocks);
 describe('Main page test', () => {
     beforeAll(() => {
         jest.useFakeTimers();
-        jest.setSystemTime(new Date('20 Aug 2020 02:12:00').getTime())
+        jest.setSystemTime(new Date('01 June 2001 00:00:00').getTime())
       });
 
     afterAll(() => {
@@ -28,17 +26,14 @@ describe('Main page test', () => {
 
     it('should render correctly', () => {
         const rendered = render(<MainPage />);
-
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 
     it('should call callback when category click', () => {
-        const rendered = render(
-            <MainPage />
-        );
+        const rendered = render(<MainPage />);
 
         expect(updateCategories).toHaveBeenCalledTimes(0);
-        rendered.getAllByText('Одежда').forEach((item) => {
+        rendered.getAllByText('Электроника').forEach((item) => {
             if(item.classList.contains('categories__badge')) {
                 fireEvent.click(item);
             }
