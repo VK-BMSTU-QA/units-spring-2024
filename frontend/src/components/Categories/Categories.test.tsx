@@ -7,7 +7,6 @@ afterEach(jest.clearAllMocks);
 describe('Categories test', () => {
     it('should render correctly', () => {
         const rendered = render(<Categories selectedCategories={[]} />);
-
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 
