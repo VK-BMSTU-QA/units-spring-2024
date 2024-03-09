@@ -13,7 +13,7 @@ const mockAC = jest.spyOn(applyCategoriesModule, 'applyCategories');
 
 afterEach(jest.clearAllMocks);
 describe('Main page test', () => {
-    it('should render', () => {
+    it('should render correctly', () => {
         const page = render(<MainPage/>);
         expect(page.asFragment()).toMatchSnapshot();
     });
