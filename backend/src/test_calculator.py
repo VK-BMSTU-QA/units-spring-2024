@@ -1,7 +1,6 @@
 import unittest
-from .calculator import Calculator
 import math
-
+from .calculator import Calculator
 
 class TestCalculator(unittest.TestCase):
     def setUp(self):
@@ -28,6 +27,15 @@ class TestCalculator(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             self.calculator.addition("",1)
+
+        with self.assertRaises(TypeError):
+            self.calculator.addition(["a"],("a"))
+
+        with self.assertRaises(TypeError):
+            self.calculator.addition({},{{},{}})
+
+        with self.assertRaises(TypeError):
+            self.calculator.addition({}, complex(1, 1))
 
     def test_multiplication(self):
         self.assertEqual(self.calculator.multiplication(1, 2), 2)
