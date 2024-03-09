@@ -21,7 +21,7 @@ exports[`ProductCards test should render correctly 1`] = `
       <h1
         class="product-card__price"
       >
-        100 $
+        1000 ₽
       </h1>
       <div
         class="product-card__category"
