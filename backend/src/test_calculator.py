@@ -9,7 +9,10 @@ class TestCalculator(unittest.TestCase):
         self.calculator = Calculator()
 
     def test_add(self):
-        self.assertEqual(self.calculator.addition(1, 2), 3)
+        self.assertEqual(self.calculator.addition(10, 20), 30)
+
+    def test_add_commutativity(self):
+        self.assertEqual(self.calculator.addition(20, 10), 30)
 
     def test_add_concatenate(self):
         self.assertEqual(self.calculator.addition('1', '2'), '12')
@@ -30,7 +33,10 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.addition(-5, -1), -6)
 
     def test_mult(self):
-        self.assertEqual(self.calculator.multiplication(1, 2), 2)
+        self.assertEqual(self.calculator.multiplication(10, 20), 200)
+
+    def test_commutativity(self):
+        self.assertEqual(self.calculator.multiplication(20, 10), 200)
 
     def test_repeat(self):
         self.assertEqual(self.calculator.multiplication('1', 5), '11111')
