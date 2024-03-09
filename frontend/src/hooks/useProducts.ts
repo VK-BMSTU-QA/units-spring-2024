@@ -19,7 +19,7 @@ export const useProducts = (): Product[] => [
         category: 'Одежда',
     },
     {
-        id: 3,
+        id: 3,  
         name: 'Настольная лампа',
         description: 'Говорят, что ее использовали в pixar',
         price: 699,
