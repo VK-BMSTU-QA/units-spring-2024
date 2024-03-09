@@ -1,5 +1,5 @@
 import unittest
-from src.calculator import Calculator
+from calculator import Calculator
 
 
 class TestCalculator(unittest.TestCase):
@@ -77,19 +77,13 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.adsolute(-8), 8)
 
     def test_abs_positive(self):
-        self.assertEqual(self.calculator.absolute(8), 8)
+        self.assertEqual(self.calculator.adsolute(8), 8)
 
     def test_abs_zero(self):
-        self.assertEqual(self.calculator.absolute(0), 0)
-
-    def test_abs_float(self):
-        self.assertAlmostEqual(self.calculator.absolute(8.48), 8.48)
+        self.assertEqual(self.calculator.adsolute(0), 0)
 
     def test_abs_float_negative(self):
-        self.assertAlmostEqual(self.calculator.absolute(-8.48), 8.48)
-
-    def test_abs_None(self):
-        self.assertRaises(TypeError, self.calculator.absolute, None)
+        self.assertAlmostEqual(self.calculator.adsolute(-8.48), 8.48)
 
     def test_deg(self):
         self.assertEqual(self.calculator.degree(5, 3), 125)
@@ -127,14 +121,41 @@ class TestCalculator(unittest.TestCase):
     def test_log(self):
         self.assertEqual(self.calculator.log(64, 2), 6)
 
-    def test_log(self):
-        self.assertEqual(self.calculator.log(64, 2), 6)
+    def test_log_float(self):
+        self.assertAlmostEqual(self.calculator.log(64, 0.5), -6.0)
+
+    def test_log_negative_base(self):
+        self.assertRaises(ValueError, self.calculator.log, 16, -2)
+
+    def test_log_negative_param(self):
+        self.assertRaises(ValueError, self.calculator.log, -16, 2)
+
+    def test_log_None_param(self):
+        self.assertRaises(TypeError, self.calculator.log, None, 2)
+
+    def test_log_None_base(self):
+        self.assertRaises(TypeError, self.calculator.log, 16, None)
+
+    def test_log_zero_param(self):
+        self.assertRaises(ValueError, self.calculator.log, 4, 0)
 
     def test_sqrt(self):
         self.assertEqual(self.calculator.sqrt(36), 6)
 
+    def test_sqrt_float(self):
+        self.assertAlmostEqual(self.calculator.sqrt(0.5), 0.7071067811865476)
+
+    def test_sqrt_zero(self):
+        self.assertEqual(self.calculator.sqrt(0), 0)
+
     def test_root(self):
         self.assertEqual(self.calculator.nth_root(27, 3), 3)
+
+    def test_nth_root_float(self):
+        self.assertAlmostEqual(self.calculator.nth_root(16.5, 4), 2.0154451623197245)
+
+    def test_nth_root_negative_root(self):
+        self.assertAlmostEqual(self.calculator.nth_root(16, -4), 0.5)
 
 
 
