@@ -14,10 +14,11 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.addition(-1, -2), -3)
         self.assertEqual(self.calculator.addition(math.inf, -2), math.inf)
 
-    def test_add_negative(self):
+    def test_add_with_string(self):
         with self.assertRaises(TypeError):
             self.calculator.addition("string", -2)
 
+    def test_add_with_list(self):
         with self.assertRaises(TypeError):
             self.calculator.addition([1, "99", 878], -2)
 
@@ -28,10 +29,11 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.subtraction(-3, 3), -6)
         self.assertEqual(self.calculator.subtraction(math.inf, 3), math.inf)
 
-    def test_sub_negative(self):
+    def test_sub_with_string(self):
         with self.assertRaises(TypeError):
             self.calculator.subtraction("string", -2)
 
+    def test_sub_with_list(self):
         with self.assertRaises(TypeError):
             self.calculator.subtraction([1, "99", 878], -2)
 
@@ -54,10 +56,11 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.adsolute(0), 0)
         self.assertEqual(self.calculator.adsolute(-math.inf), math.inf)
 
-    def test_absolute_negative(self):
+    def test_absolute_with_string(self):
         with self.assertRaises(TypeError):
             self.calculator.adsolute("string")
 
+    def test_absolute_with_list(self):
         with self.assertRaises(TypeError):
             self.calculator.adsolute([1, "99", 878])
 
@@ -68,10 +71,11 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.degree(10, 1), 10)
 
 
-    def test_degree_negative(self):
+    def test_degree_with_string(self):
         with self.assertRaises(TypeError):
             self.calculator.degree("string", 2)
 
+    def test_degree_with_list(self):
         with self.assertRaises(TypeError):
             self.calculator.adsolute([1, "99", 878], 2)
 
@@ -81,10 +85,11 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.ln(math.e ** -10), -10)
         self.assertEqual(self.calculator.ln(1), 0)
 
-    def test_ln_negative(self):
+    def test_ln_with_string(self):
         with self.assertRaises(TypeError):
             self.calculator.ln("string")
 
+    def test_ln_with_list(self):
         with self.assertRaises(TypeError):
             self.calculator.ln([1, "99", 878])
 
@@ -94,10 +99,19 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.log(4, 2), 2)
         self.assertEqual(self.calculator.log(10, 10), 1)
 
-    def test_log_negative(self):
+    def test_log_with_string(self):
         with self.assertRaises(TypeError):
             self.calculator.log("string", 2)
 
+    def test_log_with_zero(self):
+        with self.assertRaises(ValueError):
+            self.calculator.log(0, 2)
+
+    def test_log_with_negative(self):
+        with self.assertRaises(ValueError):
+            self.calculator.log(-10, 2)
+
+    def test_log_with_list(self):
         with self.assertRaises(TypeError):
             self.calculator.ln([1, "99", 878], 2)
 
@@ -107,10 +121,11 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.sqrt(0), 0)
         self.assertEqual(self.calculator.sqrt(-10), (-10) ** 0.5)
 
-    def test_sqrt_negative(self):
+    def test_sqrt_with_string(self):
         with self.assertRaises(TypeError):
             self.calculator.sqrt("string")
 
+    def test_sqrt_with_list(self):
         with self.assertRaises(TypeError):
             self.calculator.sqrt([1, "99", 878])
 
@@ -119,15 +134,13 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.nth_root(4, 1), 4)
         self.assertEqual(self.calculator.nth_root(100, 2), 10)
 
-    def test_nth_root_negative(self):
+    def test_nth_root_with_string(self):
         with self.assertRaises(TypeError):
             self.calculator.nth_root("string", 2)
 
+    def test_nth_root_with_list(self):
         with self.assertRaises(TypeError):
             self.calculator.nth_root([1, "99", 878], 2)
-
-
-
 
 
 if __name__ == "__main__":
