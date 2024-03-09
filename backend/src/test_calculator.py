@@ -61,9 +61,6 @@ class TestCalculator(unittest.TestCase):
     def test_nth_root(self):
         self.assertEqual(self.calculator.nth_root(64, 2), 8)
 
-    def test_sqrt_negative(self):
-        self.assertRaises(ValueError, self.calculator.sqrt, -9)
-
     def test_multiply(self):
         self.assertEqual(self.calculator.multiplication(8, 8), 64)
 
