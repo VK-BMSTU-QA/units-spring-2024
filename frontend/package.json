@@ -11,7 +11,7 @@
     "test": "jest",
     "test:watch": "npm test -- --watchAll",
     "test:update-snapshots": "npm test -- --updateSnapshot",
-    "open:coverage": "open ./coverage/index.html",
+    "open:coverage": ".\\coverage\\index.html",
     "preview": "vite preview"},
   "dependencies": {
     "classnames": "^2.3.2",

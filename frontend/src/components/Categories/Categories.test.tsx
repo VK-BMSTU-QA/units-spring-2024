@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Categories } from './Categories';
+import type { Category } from '../../types';
 
 afterEach(jest.clearAllMocks);
 describe('Categories test', () => {
@@ -38,4 +39,22 @@ describe('Categories test', () => {
         fireEvent.click(rendered.getByText('Одежда'));
         expect(onCategoryClick).toHaveBeenCalledTimes(1);
     });
+    
+    // it('should change category class when clicked', () => {
+        
+    //     const selectedCategories: Category[] = [];
+    //     const spy = jest.spyOn(selectedCategories, 'includes');
+    //     spy.mockReturnValue(false);
+        
+    //     const rendered = render(
+    //         <Categories
+    //             selectedCategories={selectedCategories}
+    //             onCategoryClick={() => {}}
+    //         />
+    //     );
+        
+    //     spy.mockReturnValue(true);
+    //     fireEvent.click(rendered.getByText('Одежда'));
+    //     expect(rendered.getByText('Одежда')).toHaveClass('categories__badge_selected');
+    // });
 });
