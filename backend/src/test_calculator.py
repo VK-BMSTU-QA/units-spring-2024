@@ -31,7 +31,7 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.division(5, 5), 1)
         self.assertEqual(self.calculator.division(6, 3), 2)
         self.assertEqual(self.calculator.division(-5, 1), -5)
-        self.assertEqual(self.calculator.division(3, 0), None)
+        self.assertIsNone(self.calculator.division(3, 0), 'Division by zero')
         self.assertAlmostEqual(self.calculator.division(5, -2.5), -2, places=7)
 
     def test_adsolute(self):
@@ -55,10 +55,10 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.ln(math.exp(1)), 1)
         self.assertAlmostEqual(self.calculator.ln(math.exp(2)), 2)
 
-        with self.assertRaises(Exception) as cm:
+        with self.assertRaises(ValueError) as cm:
             self.calculator.ln(-1)
 
-        with self.assertRaises(Exception) as cm:
+        with self.assertRaises(ValueError) as cm:
             self.calculator.ln(0)
 
     def test_log(self):
@@ -71,10 +71,10 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.log(math.exp(2), math.exp(1)), 2)
         self.assertAlmostEqual(self.calculator.log(math.exp(1), math.exp(2)), 0.5)
 
-        with self.assertRaises(Exception) as cm:
+        with self.assertRaises(ValueError) as cm:
             self.calculator.log(0, 2)
 
-        with self.assertRaises(Exception) as cm:
+        with self.assertRaises(ZeroDivisionError) as cm:
             self.calculator.log(2, 1)
 
     def test_sqrt(self):
