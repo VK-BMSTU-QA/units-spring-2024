@@ -38,13 +38,13 @@ jest.mock('../../utils', () => ({
 afterEach(jest.clearAllMocks);
 
 describe('MainPage', () => {
-    it('shouldrender', () => {
+    it('should render correctly', () => {
         const rendered = render(<MainPage />);
 
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 
-    it('on click called', () => {
+    it('should render correctly with category on click', () => {
         const rendered = render(<MainPage />);
 
         const categoryButton = rendered.getByText('Электроника', {
