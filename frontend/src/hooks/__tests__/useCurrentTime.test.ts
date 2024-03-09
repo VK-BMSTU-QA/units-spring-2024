@@ -1,12 +1,10 @@
-import { renderHook, act } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import { useCurrentTime } from '../useCurrentTime';
 
-test('should return current time', () => {
+const mockDate = new Date('2000-12-31T00:00:00.000Z');
+
+test('use current time hook', () => {
+    jest.spyOn(global, 'Date').mockImplementationOnce(() => mockDate);
     const { result } = renderHook(() => useCurrentTime());
-
-    act(() => {
-        result.current;
-    });
-
-    expect(result.current).toBe(new Date().toLocaleTimeString('ru-RU'));
+    expect(result.current).toStrictEqual(mockDate.toLocaleTimeString('ru-RU'));
 });
