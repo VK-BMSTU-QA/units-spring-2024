@@ -10,4 +10,9 @@ describe('test apply categories function', () => {
         expect(updateCategories(['Электроника', "Одежда"], 'Электроника')).
         toStrictEqual(["Одежда"]);
     });
+
+    it('should delete category', () => {
+        expect(updateCategories([], 'Электроника')).
+        toStrictEqual(["Электроника"]);
+    });
 });
