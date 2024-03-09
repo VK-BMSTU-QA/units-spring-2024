@@ -39,13 +39,13 @@ jest.mock('../../utils', () => ({
 afterEach(jest.clearAllMocks);
 
 describe('MainPage', () => {
-    it('should render', () => {
+    it('should render correctly', () => {
         const rendered = render(<MainPage />);
 
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 
-    it('should render text', () => {
+    it('should render text correctly', () => {
         const rendered = render(<MainPage />);
 
         expect(rendered.getByText('VK Маркет')).toBeInTheDocument();
