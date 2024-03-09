@@ -39,10 +39,17 @@ jest.mock('../../utils', () => ({
 afterEach(jest.clearAllMocks);
 
 describe('MainPage', () => {
-    it('shouldrender', () => {
+    it('should render', () => {
         const rendered = render(<MainPage />);
 
         expect(rendered.asFragment()).toMatchSnapshot();
+    });
+
+    it('should render text', () => {
+        const rendered = render(<MainPage />);
+
+        expect(rendered.getByText('VK Маркет')).toBeInTheDocument();
+        expect(rendered.getByText('15:42:50')).toBeInTheDocument();
     });
 
     it('should call callback when category click', () => {
