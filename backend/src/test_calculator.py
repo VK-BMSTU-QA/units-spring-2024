@@ -26,7 +26,7 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.subtraction(1, -1), 2)
         self.assertEqual(self.calculator.subtraction(-1, 1), -2)
         self.assertEqual(self.calculator.subtraction(1, 0), 1)
-        self.assertNotEqual(self.calculator.subtraction(1.1, 1.2), -0.1)
+        self.assertAlmostEqual(self.calculator.subtraction(1.1, 1.2), -0.1)
 
     def test_div(self):
         self.assertIsNone(self.calculator.division(1, 0), 0)
