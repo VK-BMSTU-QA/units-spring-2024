@@ -1,47 +1,51 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-// import { applyCategories } from '../../utils';
 import { MainPage } from '../MainPage';
+import { applyCategories } from '../../../utils/applyCategories';
+import { updateCategories } from '../../../utils/updateCategories';
 
-// jest.mock('../../utils');
+jest.mock('../../../hooks', () => ({
+    useProducts: jest.fn(() => [
+        {
+            id: 1,
+            name: 'Product 1',
+            description: 'Description 1',
+            price: 100,
+            priceSymbol: '$',
+            category: 'Category 1',
+            imgUrl: 'img1.png',
+        },
+        {
+            id: 2,
+            name: 'Product 2',
+            description: 'Description 2',
+            price: 200,
+            priceSymbol: '$',
+            category: 'Category 2',
+            imgUrl: 'img2.png',
+        },
+    ]),
+    useCurrentTime: jest.fn(() => '00:00 PM'),
+}));
 
-afterEach(jest.clearAllMocks);
+jest.mock('../../../utils', () => ({
+    applyCategories: jest.fn((products, categories) => products),
+    updateCategories: jest.fn((selectedCategories, clickedCategory) => [
+        ...selectedCategories,
+        clickedCategory,
+    ]),
+    getPrice: jest.fn((price, priceSymbol) => `${price} ${priceSymbol}`),
+}));
+
 describe('MainPage test', () => {
-    it('should render correctly', () => {
-        // expect(applyCategories).toBeCalledTimes(0);
-        const rendered = render(<MainPage />);
-        // expect(applyCategories).toBeCalledTimes(1);
-        // expect(applyCategories).toHaveBeenCalledWith([], []);
-
-        expect(rendered.asFragment()).toMatchSnapshot();
+    it('should render MainPage correctly', () => {
+        const { getByText } = render(<MainPage />);
+        expect(getByText('VK Маркет')).toBeInTheDocument();
+        expect(getByText('00:00 PM')).toBeInTheDocument();
+        expect(getByText('Product 1')).toBeInTheDocument();
+        expect(getByText('Product 2')).toBeInTheDocument();
+        expect(getByText('100 $')).toBeInTheDocument();
+        expect(getByText('200 $')).toBeInTheDocument();
     });
-
-    // it('should add class for selected badge', () => {
-    //     const rendered = render(<Categories selectedCategories={['Одежда']} />);
-
-    //     expect(rendered.getByText('Одежда')).toHaveClass(
-    //         'categories__badge_selected'
-    //     );
-    //     expect(rendered.getByText('Электроника')).not.toHaveClass(
-    //         'categories__badge_selected'
-    //     );
-    //     expect(rendered.getByText('Для дома')).not.toHaveClass(
-    //         'categories__badge_selected'
-    //     );
-    // });
-
-    // it('should call callback when category click', () => {
-    //     const onCategoryClick = jest.fn();
-    //     const rendered = render(
-    //         <Categories
-    //             selectedCategories={[]}
-    //             onCategoryClick={onCategoryClick}
-    //         />
-    //     );
-
-    //     expect(onCategoryClick).toHaveBeenCalledTimes(0);
-    //     fireEvent.click(rendered.getByText('Одежда'));
-    //     expect(onCategoryClick).toHaveBeenCalledTimes(1);
-    // });
 });

@@ -14,12 +14,6 @@ describe('ProductCard test', () => {
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 
-    // it('should render correctly && doesnt match', () => {
-    //     const rendered = render(<ProductCard {...products[1]} />);
-
-    //     expect(rendered.asFragment()).not.toMatchSnapshot();
-    // });
-
     it('should be all properties', () => {
         const rendered = render(<ProductCard {...products[0]} />);
 
