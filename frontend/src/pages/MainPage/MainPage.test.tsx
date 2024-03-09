@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MainPage } from '../MainPage';
 import { updateCategories } from '../../utils';
+import { useCurrentTime, useProducts } from '../../hooks';
 
 jest.mock('../../utils', () => ({
     applyCategories: jest.fn((products, categories) => products),
@@ -13,16 +14,24 @@ jest.mock('../../utils', () => ({
     ]),
 }));
 
-afterEach(jest.clearAllMocks);
-describe('Main page test', () => {
-    beforeAll(() => {
-        jest.useFakeTimers();
-        jest.setSystemTime(new Date('01 June 2001 0:00:00').getTime())
-      });
 
-    afterAll(() => {
-        jest.useRealTimers();
-    });
+jest.mock('../../hooks', () => ({
+    useCurrentTime: jest.fn(() => '00:00:00'),
+    useProducts: jest.fn(() => [
+        {
+            id: 4,
+            name: 'Принтер',
+            description: 'Незаменимая вещь для студента',
+            price: 7000,
+            category: 'Электроника',
+        },
+    ]),
+}));
+
+afterEach(jest.clearAllMocks);
+
+
+describe('Main page test', () => {
 
     it('should render correctly', () => {
         const rendered = render(<MainPage />);
