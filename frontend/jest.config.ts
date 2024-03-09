@@ -1,3 +1,4 @@
+
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -13,7 +14,12 @@ export default {
     moduleNameMapper: {
         '\\.(css)$': 'identity-obj-proxy',
     },
-    collectCoverageFrom: ['src/pages/**/*.tsx', 'src/utils/**/!(index).ts'],
+    collectCoverageFrom: [
+        'src/pages/**/*.tsx',
+        'src/utils/**/!(index).ts',
+        'src/components/**/*.tsx',
+        'src/hooks/!(index).ts',
+    ],
     coverageThreshold: {
         global: {
             branches: 90,
@@ -23,3 +29,4 @@ export default {
     },
     coverageReporters: ['text', 'html'],
 };
+
