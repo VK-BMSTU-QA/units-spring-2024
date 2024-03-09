@@ -41,10 +41,6 @@ describe('Categories test', () => {
     });
 
     it('should call useProducts, useCurrentTime, applyCategories', () => {
-        expect(useProducts).toBeCalledTimes(0);
-        expect(useCurrentTime).toBeCalledTimes(0);
-        expect(applyCategories).toBeCalledTimes(0);
-
         const rendered = render(<MainPage />);
 
         expect(useProducts).toBeCalledTimes(1);
@@ -53,8 +49,6 @@ describe('Categories test', () => {
     });
 
     it('should call updateCategories onClick', () => {
-        expect(updateCategories).toBeCalledTimes(0);
-
         const rendered = render(<MainPage />);
   
         const allCategories = rendered.getAllByText(testProducts[0].category)

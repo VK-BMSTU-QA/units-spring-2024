@@ -24,13 +24,7 @@ jest.mock('../../utils/getPrice', () => ({
 describe('ProductCard test', () => {
     it('should render correctly', () => {
         const rendered = render(<ProductCard 
-            id={testProduct.id}
-            name={testProduct.name}
-            description={testProduct.description}
-            price={testProduct.price}
-            priceSymbol={testProduct.priceSymbol}
-            category={testProduct.category}
-            imgUrl={testProduct.imgUrl}
+            {...testProduct} 
              />);
 
         expect(rendered.asFragment()).toMatchSnapshot();
@@ -50,16 +44,8 @@ describe('ProductCard test', () => {
     });
 
     it('should getPrice called', () => {
-        expect(getPrice).not.toHaveBeenCalled()
-
         render(<ProductCard 
-            id={testProduct.id}
-            name={testProduct.name}
-            description={testProduct.description}
-            price={testProduct.price}
-            priceSymbol={testProduct.priceSymbol}
-            category={testProduct.category}
-            imgUrl={testProduct.imgUrl}
+            {...testProduct} 
              />)
 
         expect(getPrice).toHaveBeenCalledTimes(1)

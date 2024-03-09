@@ -1,7 +1,7 @@
 import { PriceSymbol } from '../../types';
 import { getPrice } from '../getPrice';
 
-describe("test updateCategories function", () => {
+describe("test getPrice function", () => {
     it.each([
         {
             price: 100,
