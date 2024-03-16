@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductCard test should render correctly with image 1`] = `
+exports[`ProductCard test should render correctly 1`] = `
 <DocumentFragment>
   <div
     class="product-card"
@@ -11,12 +11,12 @@ exports[`ProductCard test should render correctly with image 1`] = `
       <h2
         class="product-card__name"
       >
-        1
+        test 1
       </h2>
       <div
         class="product-card__description"
       >
-        1
+        test 1
       </div>
       <h1
         class="product-card__price"
@@ -30,43 +30,10 @@ exports[`ProductCard test should render correctly with image 1`] = `
       </div>
     </div>
     <img
-      alt="1"
+      alt="test 1"
       class="product-card__image"
       src="1.png"
     />
-  </div>
-</DocumentFragment>
-`;
-
-exports[`ProductCard test should render correctly without image 1`] = `
-<DocumentFragment>
-  <div
-    class="product-card"
-  >
-    <div
-      class="product-card__text"
-    >
-      <h2
-        class="product-card__name"
-      >
-        2
-      </h2>
-      <div
-        class="product-card__description"
-      >
-        2
-      </div>
-      <h1
-        class="product-card__price"
-      >
-        2 $
-      </h1>
-      <div
-        class="product-card__category"
-      >
-        Электроника
-      </div>
-    </div>
   </div>
 </DocumentFragment>
 `;

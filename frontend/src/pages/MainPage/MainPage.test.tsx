@@ -43,12 +43,14 @@ describe('MainPage test', () => {
 
         expect(rendered.asFragment()).toMatchSnapshot();
     });
+
     it('should have correct render text', () => {
         const rendered =  render(<MainPage />);
 
         expect(rendered.getByText('VK Маркет')).toBeInTheDocument();
         expect(rendered.getByText('17:51:39')).toBeInTheDocument();
     });
+
     it('should work out the functions correctly', () => {
         const rendered = render(<MainPage />);
 
@@ -61,5 +63,6 @@ describe('MainPage test', () => {
         fireEvent.click(categoryButton);
 
         expect(updateCategories).toHaveBeenCalledTimes(1);
+        expect(categoryButton.classList.contains('categories__badge_selected')).toBeTruthy();
     });
 });

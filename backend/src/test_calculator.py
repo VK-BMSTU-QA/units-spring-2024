@@ -8,6 +8,8 @@ class TestCalculator(unittest.TestCase):
     def setUp(self):
         self.calculator = Calculator()
 
+    #test add
+
     def test_add(self):
         self.assertEqual(self.calculator.addition(1, 2), 3)
 
@@ -28,7 +30,12 @@ class TestCalculator(unittest.TestCase):
     
     def test_add_string(self):
         self.assertEqual(self.calculator.addition("1", "3"), "13")
+
+    def test_add_arr(self):
+        self.assertRaises(TypeError, self.calculator.addition, [1, 2], 1)
     
+    #test multiplication
+
     def test_multiplication(self):
         self.assertEqual(self.calculator.multiplication(3, 2), 6)
 
@@ -56,6 +63,11 @@ class TestCalculator(unittest.TestCase):
     def test_multiplication_string(self):
         self.assertRaises(TypeError, self.calculator.multiplication, "1", "1")
 
+    def test_multiplication_arr(self):
+        self.assertEqual(self.calculator.multiplication([1, 2], 2), [1, 2, 1, 2])
+
+    #test subtraction
+
     def test_subtraction(self):
         self.assertEqual(self.calculator.subtraction(4, 2), 2)
 
@@ -73,6 +85,11 @@ class TestCalculator(unittest.TestCase):
 
     def test_subtraction_types(self):
         self.assertRaises(TypeError, self.calculator.subtraction, "1", 1)
+
+    def test_subtraction_arr(self):
+        self.assertRaises(TypeError, self.calculator.subtraction, [1, 2], 1)
+
+    #test division
 
     def test_division(self):
         self.assertEqual(self.calculator.division(4, 2), 2)
@@ -95,8 +112,16 @@ class TestCalculator(unittest.TestCase):
     def test_division_fract(self):
         self.assertAlmostEqual(self.calculator.division(4.5, 1.5), 3)
 
+    def test_division_period(self):
+        self.assertAlmostEqual(self.calculator.division(10, 3), 3.333333333333333333333333333)
+
     def test_division_types(self):
         self.assertRaises(TypeError, self.calculator.division, "1", 1)
+
+    def test_division_arr(self):
+        self.assertRaises(TypeError, self.calculator.division, [1, 2], 1)
+
+    #test adsolute
 
     def test_adsolute(self):
         self.assertEqual(self.calculator.adsolute(4), 4)
@@ -115,6 +140,11 @@ class TestCalculator(unittest.TestCase):
 
     def test_adsolute_types(self):
         self.assertRaises(TypeError, self.calculator.adsolute, "1")
+
+    def test_adsolute_arr(self):
+        self.assertRaises(TypeError, self.calculator.adsolute, [1, 2])
+
+    #test degree
 
     def test_degree(self):
         self.assertEqual(self.calculator.degree(4, 2), 16)
@@ -138,7 +168,12 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.degree(4.2, 2.1), 20.3621443)
 
     def test_degree_types(self):
-        self.assertRaises(TypeError, self.calculator.degree, "1", 1)				
+        self.assertRaises(TypeError, self.calculator.degree, "1", 1)
+
+    def test_degree_arr(self):
+        self.assertRaises(TypeError, self.calculator.degree, [1, 2], 1)			
+
+    #test ln
 
     def test_ln(self):
         self.assertEqual(self.calculator.ln(math.e), 1)
@@ -152,14 +187,25 @@ class TestCalculator(unittest.TestCase):
     def test_ln_inf(self):
         self.assertEqual(self.calculator.ln(math.inf), math.inf)
 
+    def test_ln_fract(self):
+        self.assertEqual(self.calculator.ln(2.7), 0.9932517730102834)
+
     def test_ln_types(self):
         self.assertRaises(TypeError, self.calculator.ln, "1")
+
+    def test_ln_arr(self):
+        self.assertRaises(TypeError, self.calculator.ln, [1, 2])
+
+    #test log
 
     def test_log(self):
         self.assertEqual(self.calculator.log(4, 4), 1)
 
     def test_log_negative(self):
         self.assertRaises(ValueError, self.calculator.log, -4, -4)
+    
+    def test_log_less_one(self):
+        self.assertEqual(self.calculator.log(2, 4), 0.5)
 
     def test_log_none(self):
         self.assertRaises(TypeError, self.calculator.log, None, None)
@@ -172,6 +218,11 @@ class TestCalculator(unittest.TestCase):
 
     def test_log_types(self):
         self.assertRaises(TypeError, self.calculator.log, "1", "2")
+
+    def test_log_arr(self):
+        self.assertRaises(TypeError, self.calculator.log, [1, 2], 2)
+
+    #test sqrt
 
     def test_sqrt(self):
         self.assertEqual(self.calculator.sqrt(4), 2)
@@ -188,8 +239,16 @@ class TestCalculator(unittest.TestCase):
     def test_sqrt_fract(self):
         self.assertAlmostEqual(self.calculator.sqrt(4.2), 2.04939015319192)
 
+    def test_sqrt_fract_result(self):
+        self.assertAlmostEqual(self.calculator.sqrt(8), 2.8284271247461903)
+
     def test_sqrt_types(self):
         self.assertRaises(TypeError, self.calculator.sqrt, "1")
+
+    def test_sqrt_arr(self):
+        self.assertRaises(TypeError, self.calculator.sqrt, [1, 2])
+
+    #test nth_root
 
     def test_nth_root(self):
         self.assertEqual(self.calculator.nth_root(4, 2), 2)
@@ -208,6 +267,9 @@ class TestCalculator(unittest.TestCase):
 
     def test_nth_root_types(self):
         self.assertRaises(TypeError, self.calculator.nth_root, "1", 1)
+
+    def test_nth_root_arr(self):
+        self.assertRaises(TypeError, self.calculator.nth_root, [1, 2], 1)
 
 
 
