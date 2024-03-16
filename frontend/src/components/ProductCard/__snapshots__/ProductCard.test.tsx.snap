@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test ProductCard test should render correctly  1`] = `
+exports[`test ProductCard component should render correctly  1`] = `
 <DocumentFragment>
   <div
     class="product-card"
@@ -38,7 +38,7 @@ exports[`test ProductCard test should render correctly  1`] = `
 </DocumentFragment>
 `;
 
-exports[`test ProductCard test should render correctly without image 1`] = `
+exports[`test ProductCard component should render correctly without image 1`] = `
 <DocumentFragment>
   <div
     class="product-card"

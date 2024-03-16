@@ -1,16 +1,21 @@
-import { Category } from "../../types";
 import { updateCategories } from "../updateCategories";
 
 describe('test updateCategories', () => {
-    it('empty currentCategories', () => {
-        expect(updateCategories([], 'Для дома')).toContain('Для дома');
+    it('should return caterory updated on empty array', () => {
+        expect(updateCategories([], 'Для дома')).toStrictEqual(['Для дома']);
     });
-    it('delele current category', () => {
-        expect(updateCategories(['Для дома', 'Электроника'], 'Для дома')).not.toContain('Для дома');
-        expect(updateCategories(['Для дома', 'Электроника'], 'Для дома')).toContain('Электроника');
+
+    it('should delete selected catetegory', () => {
+        const result = updateCategories(['Для дома', 'Электроника'], 'Для дома');
+        expect(result).not.toContain('Для дома');
+        expect(result).toContain('Электроника');
+        expect(result.length).toBe(1);
     });
-    it('add category', () => {
-        expect(updateCategories(['Для дома'], 'Электроника')).toContain('Для дома');
-        expect(updateCategories(['Для дома'], 'Электроника')).toContain('Электроника');
+
+    it('should add category to not empty array', () => {
+        const result = updateCategories(['Для дома'], 'Электроника')
+        expect(result).toContain('Для дома');
+        expect(result).toContain('Электроника');
+        expect(result.length).toBe(2);
     });
 });

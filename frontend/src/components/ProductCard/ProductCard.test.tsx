@@ -23,15 +23,17 @@ const productNoImg: Product = {
     category: 'Электроника',
 };
 
-describe('test ProductCard test', () => {
+describe('test ProductCard component', () => {
 
     it('should render correctly ', () => {
         const rendered = render(<ProductCard {...product} />);
+        expect(rendered.asFragment().querySelectorAll('.product-card__image').length).toBe(1)
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 
     it('should render correctly without image', () => {
         const rendered = render(<ProductCard {...productNoImg} />);
+        expect(rendered.asFragment().querySelectorAll('.product-card__image').length).toBe(0)
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 });

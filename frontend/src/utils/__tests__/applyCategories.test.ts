@@ -41,12 +41,22 @@ const products: Product[] = [
 
 describe('test applyCategories', () => {
     it('should return same products on empty categories', () => {
-        expect(applyCategories(product, [])).toContainEqual(product[0]);
+        expect(applyCategories(product, [])).toStrictEqual(product);
     });
-    it('should apply categories', () => {
-        expect(applyCategories(products, ['Электроника'])).toContainEqual(products[0]);
-        expect(applyCategories(products, ['Для дома'])).toContainEqual(products[1]);
-        expect(applyCategories(products, ['Одежда'])).toContainEqual(products[2]);
-        expect(applyCategories(products, ['Одежда', 'Электроника', 'Для дома']).length).toBe(3);
+    it('should apply all categories', () => {
+        expect(applyCategories(products, ['Одежда', 'Электроника', 'Для дома'])).toStrictEqual(products);
+    });
+
+    it('should apply one category', () => {
+        expect(applyCategories(products, ['Электроника'])).toStrictEqual( [products[0]] );
+        expect(applyCategories(products, ['Для дома'])).toStrictEqual( [products[1]] );
+        expect(applyCategories(products, ['Одежда'])).toStrictEqual( [products[2]] );
+    });
+
+    it('should apply two categories', () => {
+        const result = applyCategories(products, ['Одежда', 'Электроника']);
+        expect(result).toContainEqual(products[0]);
+        expect(result).toContainEqual(products[2]);
+        expect(result.length).toBe(2);
     });
 });

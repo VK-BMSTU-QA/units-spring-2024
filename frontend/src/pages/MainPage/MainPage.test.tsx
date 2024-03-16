@@ -1,30 +1,33 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, queryAllByText, queryByAltText, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MainPage } from './MainPage';
 import { applyCategories, getPrice, updateCategories } from '../../utils';
 import { useCurrentTime, useProducts } from '../../hooks';
+import { Product } from '../../types';
+
+const products: Product[] = [
+    {
+        id: 1,
+        name: '1',
+        description: '1',
+        price: 1,
+        priceSymbol: '$',
+        category: 'Электроника',
+        imgUrl: '1.png',
+    },
+    {
+        id: 2,
+        name: '2',
+        description: '2',
+        price: 2,
+        priceSymbol: '₽',
+        category: 'Для дома',
+    }
+];
 
 jest.mock('../../hooks', () => ({
-    useProducts: jest.fn(() => [
-        {
-            id: 1,
-            name: '1',
-            description: '1',
-            price: 1,
-            priceSymbol: '$',
-            category: 'Электроника',
-            imgUrl: '1.png',
-        },
-        {
-            id: 2,
-            name: '2',
-            description: '2',
-            price: 2,
-            priceSymbol: '₽',
-            category: 'Для дома',
-        },
-    ]),
+    useProducts: jest.fn(() => products),
     useCurrentTime: jest.fn(() => '4:20:00'),
 }));
 
@@ -45,7 +48,7 @@ describe('test MainPage component', () => {
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 
-    it('should have correct render text', () => {
+    it('should have correct header and time', () => {
         const rendered =  render(<MainPage />);
 
         expect(rendered.getByText('VK Маркет')).toBeInTheDocument();
@@ -53,12 +56,13 @@ describe('test MainPage component', () => {
     });
 
     it('should call functions', () => {
-        const rendered = render(<MainPage />);
+        render(<MainPage />);
 
         expect(useProducts).toHaveBeenCalled();
         expect(useCurrentTime).toHaveBeenCalled();
-        expect(getPrice).toHaveBeenCalled();
-        expect(applyCategories).toHaveBeenCalled();
+        expect(getPrice).toBeCalledWith(products[0].price, products[0].priceSymbol);
+        expect(getPrice).toBeCalledWith(products[1].price, products[1].priceSymbol);
+        expect(applyCategories).toHaveBeenCalledWith(products, []);
     });
 
     it('shoudld call update and apply Categories on click', () => {
@@ -72,7 +76,9 @@ describe('test MainPage component', () => {
 
         fireEvent.click(categoryButton);
 
-        expect(applyCategories).toHaveBeenCalled();
+        expect(rendered.getByText('Электроника', { selector: '.categories__badge_selected',})).toBeInTheDocument();
+        expect(applyCategories).toBeCalled();
         expect(updateCategories).toHaveBeenCalledTimes(1);
+        expect(updateCategories).toHaveBeenCalledWith([], 'Электроника');
     });
 });
