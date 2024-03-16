@@ -60,6 +60,6 @@ describe('MainPage', () => {
         expect(updateCategories).toHaveBeenCalledTimes(0);
         fireEvent.click(rendered.getByText('Одежда', {selector: '.categories__badge'}));
         expect(updateCategories).toHaveBeenCalledTimes(1);
-    });
-
+        expect(rendered.getByText('Одежда', {selector: '.categories__badge'}).classList.contains('categories__badge_selected')).toBeTruthy();
+    })
 });

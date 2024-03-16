@@ -35,6 +35,9 @@ class TestCalculator(unittest.TestCase):
     def test_add_string(self):
         self.assertRaises(TypeError, self.calculator.addition, 'abc', 1)
 
+    def test_add_arr(self):
+        self.assertRaises(TypeError, self.calculator.addition, [1,2], 1)
+
 
     #miltiplication tests
 
@@ -65,7 +68,12 @@ class TestCalculator(unittest.TestCase):
     def test_mult_string_string(self):
         self.assertRaises(TypeError, self.calculator.multiplication, 'abc', 'cba') 
 
-    
+    def test_mult_arr_number(self):
+        self.assertEqual(self.calculator.multiplication([1,2], 2), [1,2,1,2])
+
+    def test_mult_arr_arr(self):
+        self.assertRaises(TypeError, self.calculator.multiplication, [1,2], [3,4]) 
+
 
     #subtraction tests
 
@@ -95,6 +103,9 @@ class TestCalculator(unittest.TestCase):
     
     def test_sub_string(self):
         self.assertRaises(TypeError, self.calculator.subtraction, 'abc', 3)
+
+    def test_sub_arr(self):
+        self.assertRaises(TypeError, self.calculator.subtraction, [1,2], 3)
     
 
     #division tests
@@ -110,6 +121,9 @@ class TestCalculator(unittest.TestCase):
 
     def test_div_double(self):
         self.assertAlmostEqual(self.calculator.division(1.2, 2.4), 0.5)
+
+    def test_div_irr(self):
+        self.assertAlmostEqual(self.calculator.division(4, 3), 1.3333333333333333333)
 
     def test_div_by_zero(self):
         self.assertEqual(self.calculator.division(5, 0), None)
@@ -128,6 +142,9 @@ class TestCalculator(unittest.TestCase):
     
     def test_div_string(self):
         self.assertRaises(TypeError, self.calculator.division, 'abc', 3)
+
+    def test_div_arr(self):
+        self.assertRaises(TypeError, self.calculator.division, [1,2], 3)
     
 
     #absolute tests
@@ -155,6 +172,9 @@ class TestCalculator(unittest.TestCase):
     
     def test_absolute_string(self):
         self.assertRaises(TypeError, self.calculator.absolute, 'abc')
+
+    def test_absolute_arr(self):
+        self.assertRaises(TypeError, self.calculator.absolute, [1,2])
 
 
     #degree tests
@@ -195,6 +215,9 @@ class TestCalculator(unittest.TestCase):
     def test_degree_string(self):
         self.assertRaises(TypeError, self.calculator.degree, 'abc', 3)
 
+    def test_degree_arr(self):
+        self.assertRaises(TypeError, self.calculator.degree, [1,2], 3)
+
     
     #ln tests
 
@@ -215,6 +238,9 @@ class TestCalculator(unittest.TestCase):
     
     def test_ln_string(self):
         self.assertRaises(TypeError, self.calculator.ln, 'abc')
+
+    def test_ln_arr(self):
+        self.assertRaises(TypeError, self.calculator.ln, [1,2])
 
     
     #log tests
@@ -249,6 +275,9 @@ class TestCalculator(unittest.TestCase):
     def test_log_string(self):
         self.assertRaises(TypeError, self.calculator.log, 'abc', 3)
 
+    def test_log_arr(self):
+        self.assertRaises(TypeError, self.calculator.log, [1,2], 3)
+
 
     #sqrt tests
         
@@ -257,6 +286,9 @@ class TestCalculator(unittest.TestCase):
 
     def test_sqrt_double(self):
         self.assertAlmostEqual(self.calculator.sqrt(1.44), 1.2)
+
+    def test_sqrt_double(self):
+        self.assertAlmostEqual(self.calculator.sqrt(5), 2.236068)
 
     def test_sqrt_zero(self):
         self.assertEqual(self.calculator.sqrt(0), 0)
@@ -269,6 +301,9 @@ class TestCalculator(unittest.TestCase):
     
     def test_sqrt_string(self):
         self.assertRaises(TypeError, self.calculator.sqrt, 'abc', 3)
+
+    def test_sqrt_arr(self):
+        self.assertRaises(TypeError, self.calculator.sqrt, [1,2], 3)
 
 
     #nth_root tests
@@ -302,6 +337,9 @@ class TestCalculator(unittest.TestCase):
     
     def test_nth_root_string(self):
         self.assertRaises(TypeError, self.calculator.nth_root, 'abc', 3)
+
+    def test_nth_root_arr(self):
+        self.assertRaises(TypeError, self.calculator.nth_root, [1,2], 3)
 
 
 if __name__ == "__main__":

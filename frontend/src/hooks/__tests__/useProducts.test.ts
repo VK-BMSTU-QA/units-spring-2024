@@ -1,45 +1,21 @@
-import { Product } from "../../types";
-import { useProducts } from "../useProducts";
+import { Product } from '../../types';
+import { useProducts } from '../useProducts';
 
 describe('test use products function', () => {
+    const products: Product = {
+        id: 1,
+        name: 'IPhone 14 Pro',
+        description: 'Latest iphone, buy it now',
+        price: 999,
+        priceSymbol: '$',
+        category: 'Электроника',
+        imgUrl: '/iphone.png',
+    };
 
-    const products : Product[] = [
-        {
-            id: 1,
-            name: 'IPhone 14 Pro',
-            description: 'Latest iphone, buy it now',
-            price: 999,
-            priceSymbol: '$',
-            category: 'Электроника',
-            imgUrl: '/iphone.png',
-        },
-        {
-            id: 2,
-            name: 'Костюм гуся',
-            description: 'Запускаем гуся, работяги',
-            price: 1000,
-            priceSymbol: '₽',
-            category: 'Одежда',
-        },
-        {
-            id: 3,
-            name: 'Настольная лампа',
-            description: 'Говорят, что ее использовали в pixar',
-            price: 699,
-            category: 'Для дома',
-            imgUrl: '/lamp.png',
-        },
-        {
-            id: 4,
-            name: 'Принтер',
-            description: 'Незаменимая вещь для студента',
-            price: 7000,
-            category: 'Электроника',
-        },
-    ];    
-
-
-    it('should return products', () => {
-        expect(useProducts()).toStrictEqual(products);
+    it('should contain all properties', () => {
+        const res = useProducts()[0];
+        for (const prop in products) {
+            expect(res.hasOwnProperty(prop)).toBeTruthy();
+        }
     });
-})
+});

@@ -3,24 +3,24 @@ import { updateCategories } from '../updateCategories';
 
 describe('test update categories function', () => {
 
-    const inputCategories : Category[] = [
+    const inputTwoCategories : Category[] = [
         'Для дома',
         "Одежда"
     ]
 
-    const inpCategories : Category[] = [
+    const inputOneCategorie : Category[] = [
         "Одежда"
     ]
 
-    it('should return changed categories', () => {
-        expect(updateCategories(inputCategories, 'Электроника')).toStrictEqual([...inputCategories, 'Электроника']);
+    it('should return input categories and one added category', () => {
+        expect(updateCategories(inputTwoCategories, 'Электроника')).toStrictEqual([...inputTwoCategories, 'Электроника']);
     });
 
-    it('should return changed categories', () => {
-        expect(updateCategories(inputCategories, 'Одежда')).toStrictEqual([inputCategories[0]]);
+    it('should return categories without one mentioned in input list', () => {
+        expect(updateCategories(inputTwoCategories, 'Одежда')).toStrictEqual([inputTwoCategories[0]]);
     });
 
-    it('should return changed categories', () => {
-        expect(updateCategories(inpCategories, 'Одежда')).toStrictEqual([]);
+    it('should return nothing from list with one category which mentioned in input data', () => {
+        expect(updateCategories(inputOneCategorie, 'Одежда')).toStrictEqual([]);
     });
 });
