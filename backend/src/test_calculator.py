@@ -135,8 +135,8 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.calculator.adsolute('1')
 
-        self.assertRaises(self.calculator.adsolute(True), 1)
-        self.assertRaises(self.calculator.adsolute(False), 0)
+        self.assertEqual(self.calculator.adsolute(True), 1)
+        self.assertEqual(self.calculator.adsolute(False), 0)
 
         with self.assertRaises(TypeError):
             self.calculator.adsolute(None)
