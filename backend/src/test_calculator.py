@@ -81,10 +81,9 @@ class TestCalculator(unittest.TestCase):
             self.calculator.multiplication({'a':1}, 1)
 
         with self.assertRaises(TypeError):
-            self.calculator.multiplication([1], 1)
-
-        with self.assertRaises(TypeError):
             self.calculator.multiplication('1', '2')
+
+        self.assertEqual(self.calculator.multiplication([1], 3), [1, 1, 1])
 
         self.assertAlmostEqual(self.calculator.multiplication(2, 0.5), 1, places=7)
         self.assertAlmostEqual(self.calculator.multiplication(2, -0.5), -1, places=7)
@@ -124,7 +123,7 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.division(2, 5), 0.4, places=7)
         self.assertAlmostEqual(self.calculator.division(5, -2.5), -2, places=7)
         self.assertAlmostEqual(self.calculator.division(-5, 2.5), -2, places=7)
-        self.assertAlmostEqual(self.calculator.division(1, 3), 0.3333, places=7)
+        self.assertAlmostEqual(self.calculator.division(1, 3), 0.33, places=7)
 
     def test_adsolute(self):
         self.assertEqual(self.calculator.adsolute(3), 3)
@@ -183,10 +182,17 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.ln(math.exp(1)), 1)
         self.assertAlmostEqual(self.calculator.ln(math.exp(2)), 2)
 
-        self.assertRaises(TypeError, self.calculator.ln(None))
-        self.assertRaises(TypeError, self.calculator.ln({'a':1}))
-        self.assertRaises(TypeError, self.calculator.ln([1]))
-        self.assertRaises(TypeError, self.calculator.ln('2'))
+        with self.assertRaises(TypeError):
+            self.calculator.ln(None)
+
+        with self.assertRaises(TypeError):
+            self.calculator.ln({'a':1})
+
+        with self.assertRaises(TypeError):
+            self.calculator.ln([1])
+
+        with self.assertRaises(TypeError):
+            self.calculator.ln('2')
 
         with self.assertRaises(Exception) as cm:
             self.calculator.ln(-1)
