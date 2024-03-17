@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import { useProducts } from '../useProducts'; // replace with the correct path
+import { useProducts } from '../useProducts';
 import type { Product } from '../../types';
 
 describe('useProducts', () => {
