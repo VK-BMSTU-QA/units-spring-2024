@@ -114,7 +114,8 @@ describe('MainPage', () => {
         },
       ];
         
-      expect(updateCategories).toHaveBeenCalledWith([], 'Для дома');
+      expect(updateCategories).toHaveBeenNthCalledWith(1, [], 'Для дома');
+      // expect(updateCategories).toHaveBeenCalledTimes(1);
       expect(applyCategories).toHaveBeenCalledWith(mock, ['Для дома']);
     });
 });
