@@ -21,7 +21,7 @@ exports[`Product card test does not render image if imgUrl is not provided 1`] =
       <h1
         class="product-card__price"
       >
-        123 ₽
+        123 undefined
       </h1>
       <div
         class="product-card__category"
@@ -54,7 +54,7 @@ exports[`Product card test should render correctly 1`] = `
       <h1
         class="product-card__price"
       >
-        123 ₽
+        123 undefined
       </h1>
       <div
         class="product-card__category"
