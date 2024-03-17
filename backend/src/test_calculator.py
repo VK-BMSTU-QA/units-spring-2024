@@ -162,12 +162,23 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.log(math.exp(2), math.exp(1)), 2)
         self.assertAlmostEqual(self.calculator.log(math.exp(1), math.exp(2)), 0.5)
 
-        self.assertRaises(TypeError, self.calculator.log(None, 2))
-        self.assertRaises(TypeError, self.calculator.log({'a':1}, 3))
-        self.assertRaises(TypeError, self.calculator.log([1], 2))
-        self.assertRaises(TypeError, self.calculator.log('4', '5'))
-        self.assertRaises(TypeError, self.calculator.log('5', 4))
-        self.assertRaises(TypeError, self.calculator.log(5, '4'))
+        with self.assertRaises(TypeError):
+            self.calculator.log(None, 2)
+
+        with self.assertRaises(TypeError):
+            self.calculator.log({'a':1}, 3)
+
+        with self.assertRaises(TypeError):
+            self.calculator.log([1], 2)
+
+        with self.assertRaises(TypeError):
+            self.calculator.log('4', '5')
+
+        with self.assertRaises(TypeError):
+            self.calculator.log('5', 4)
+
+        with self.assertRaises(TypeError):
+            self.calculator.log(5, '4')
 
         with self.assertRaises(Exception) as cm:
             self.calculator.log(0, 2)
@@ -182,7 +193,8 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.sqrt(1), 1)
         self.assertAlmostEqual(self.calculator.sqrt(0.25), 0.5)
 
-        self.assertRaises(TypeError, self.calculator.sqrt('1'))
+        with self.assertRaises(TypeError):
+            self.calculator.sqrt('1')
 
     def test_nth_root(self):
         #self.assertEqual(self.calculator.sqrt(-1), None)
@@ -193,9 +205,14 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.nth_root(0.25, 2), 0.5)
         self.assertAlmostEqual(self.calculator.nth_root(0.125, 3), 0.5)
 
-        self.assertRaises(TypeError, self.calculator.nth_root('4', '5'))
-        self.assertRaises(TypeError, self.calculator.nth_root('5', 4))
-        self.assertRaises(TypeError, self.calculator.nth_root(5, '4'))
+        with self.assertRaises(TypeError):
+            self.calculator.nth_root('4', '5')
+
+        with self.assertRaises(TypeError):
+            self.calculator.nth_root('5', 4)
+
+        with self.assertRaises(TypeError):
+            self.calculator.nth_root(5, '4')
 
 
 if __name__ == "__main__":
