@@ -25,3 +25,7 @@ dist-ssr
 *.sw?
 
 test-report.html
+
+
+.coverage
+**/__pycache__

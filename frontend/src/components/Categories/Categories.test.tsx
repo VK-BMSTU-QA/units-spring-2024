@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Categories } from './Categories';
+import type { Category } from '../../types';
 
 afterEach(jest.clearAllMocks);
 describe('Categories test', () => {
@@ -38,4 +39,5 @@ describe('Categories test', () => {
         fireEvent.click(rendered.getByText('Одежда'));
         expect(onCategoryClick).toHaveBeenCalledTimes(1);
     });
+    
 });
