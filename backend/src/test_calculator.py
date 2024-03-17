@@ -104,14 +104,20 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.adsolute(3.2), 3.2)
         self.assertAlmostEqual(self.calculator.adsolute(-3.2), 3.2)
 
-        self.assertRaises(TypeError, self.calculator.adsolute('1'))
+        with self.assertRaises(TypeError):
+            self.calculator.adsolute('1')
 
         self.assertRaises(self.calculator.adsolute(True), 1)
         self.assertRaises(self.calculator.adsolute(False), 0)
 
-        self.assertRaises(TypeError, self.calculator.adsolute(None))
-        self.assertRaises(TypeError, self.calculator.adsolute({'a':1}))
-        self.assertRaises(TypeError, self.calculator.adsolute([1]))
+        with self.assertRaises(TypeError):
+            self.calculator.adsolute(None)
+        
+        with self.assertRaises(TypeError):
+            self.calculator.adsolute({'a':1})
+
+        with self.assertRaises(TypeError):
+            self.calculator.adsolute([1])
 
     def test_degree(self):
         self.assertAlmostEqual(self.calculator.degree(1, 2), 1)
@@ -124,15 +130,23 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.degree(-2, -2), 0.25)
         self.assertAlmostEqual(self.calculator.degree(-2, 3), -8)
 
-        self.assertRaises(TypeError, self.calculator.degree('1', '2'))
-        self.assertRaises(TypeError, self.calculator.degree('1', 2))
+        with self.assertRaises(TypeError):
+            self.calculator.degree('1', '2')
+
+        with self.assertRaises(TypeError):
+            self.calculator.degree('1', 2)
 
         self.assertAlmostEqual(self.calculator.degree(5, True), 5)
         self.assertAlmostEqual(self.calculator.degree(-2, False), 1)
 
-        self.assertRaises(TypeError, self.calculator.degree(None, 2))
-        self.assertRaises(TypeError, self.calculator.degree({'a':1}, 1))
-        self.assertRaises(TypeError, self.calculator.degree([1], 1))
+        with self.assertRaises(TypeError):
+            self.calculator.degree(None, 2)
+
+        with self.assertRaises(TypeError):
+            self.calculator.degree({'a':1}, 1)
+
+        with self.assertRaises(TypeError):
+            self.calculator.degree([1], 1)
 
     def test_ln(self):
         self.assertEqual(self.calculator.ln(1), 0)
