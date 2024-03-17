@@ -116,6 +116,7 @@ describe('MainPage', () => {
         
       expect(updateCategories).toHaveBeenNthCalledWith(1, [], 'Для дома');
       expect(updateCategories).toHaveBeenCalledTimes(1);
-      expect(applyCategories).toHaveBeenCalledWith(mock, ['Для дома']);
+      expect(applyCategories).toHaveBeenNthCalledWith(4, mock, ['Для дома']); // len(mock) = 4
+      expect(applyCategories).toHaveBeenCalledTimes(4);
     });
 });
