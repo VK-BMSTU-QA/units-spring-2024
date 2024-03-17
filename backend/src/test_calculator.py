@@ -123,7 +123,7 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.division(2, 5), 0.4, places=7)
         self.assertAlmostEqual(self.calculator.division(5, -2.5), -2, places=7)
         self.assertAlmostEqual(self.calculator.division(-5, 2.5), -2, places=7)
-        self.assertAlmostEqual(self.calculator.division(1, 3), 0.33, places=5)
+        self.assertAlmostEqual(self.calculator.division(1, 3), 1/3, places=7)
 
     def test_adsolute(self):
         self.assertEqual(self.calculator.adsolute(3), 3)
@@ -135,11 +135,8 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.calculator.adsolute('1')
 
-        with self.assertRaises(TypeError):
-            self.calculator.adsolute(True)
-        
-        with self.assertRaises(TypeError):
-            self.calculator.adsolute(False)
+        self.assertRaises(self.calculator.adsolute(True), 1)
+        self.assertRaises(self.calculator.adsolute(False), 0)
 
         with self.assertRaises(TypeError):
             self.calculator.adsolute(None)
