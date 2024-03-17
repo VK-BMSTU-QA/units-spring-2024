@@ -35,10 +35,10 @@ describe('ProductCard test', () => {
     });
 
     it('should not render image if imgUrl is not provided', () => {
-        const { queryByAltText } = render(
+        const { queryByTestId } = render(
             <ProductCard {...mockProduct} imgUrl={undefined} />
         );
 
-        expect(queryByAltText('Test Product')).not.toBeInTheDocument();
+        expect(queryByTestId('product-image')).not.toBeInTheDocument();
     });
 });

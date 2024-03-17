@@ -38,6 +38,11 @@ describe('test apply categories function', () => {
             product[0],
             product[1],
         ]);
+    })
+    it('should return product with category from categories', () => {
+        expect(applyCategories(product, ['Для дома'])).toStrictEqual([
+            product[1],
+        ]);
     });
     it('should return empty array', () => {
         expect(applyCategories([product[2]], category)).toStrictEqual([]);

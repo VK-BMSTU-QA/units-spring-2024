@@ -11,10 +11,9 @@ afterAll(() => {
 
 describe('useCurrentTime hook tests', () => {
     it('returns the current time', () => {
+        jest.setSystemTime(new Date(2024, 3, 17, 10, 11, 12));
         const { result } = renderHook(() => useCurrentTime());
-        expect(result.current).toStrictEqual(
-            new Date().toLocaleTimeString('ru-RU')
-        );
+        expect(result.current).toBe('10:11:12');
     });
 
     it('cleans up interval on unmount', () => {

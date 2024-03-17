@@ -8,6 +8,8 @@ class TestCalculator(unittest.TestCase):
     def setUp(self):
         self.calculator = Calculator()
 
+    # test for add
+
     def test_add(self):
         self.assertEqual(self.calculator.addition(10, 20), 30)
 
@@ -23,6 +25,9 @@ class TestCalculator(unittest.TestCase):
     def test_add_TypeError(self):
         self.assertRaises(TypeError, self.calculator.addition, 1, '1')
 
+    def test_add_list_TypeError(self):
+        self.assertRaises(TypeError, self.calculator.addition, 1, ['1'])
+
     def test_add_none(self):
         self.assertRaises(TypeError, self.calculator.addition, None, None)
 
@@ -31,6 +36,8 @@ class TestCalculator(unittest.TestCase):
 
     def test_add_negative(self):
         self.assertEqual(self.calculator.addition(-5, -1), -6)
+
+    # test for multiplication
 
     def test_mult(self):
         self.assertEqual(self.calculator.multiplication(10, 20), 200)
@@ -47,6 +54,9 @@ class TestCalculator(unittest.TestCase):
     def test_mult_TypeError(self):
         self.assertRaises(TypeError, self.calculator.multiplication, '1', '1')
 
+    def test_mult_list_TypeError(self):
+        self.assertRaises(TypeError, self.calculator.multiplication, [1], [1])
+
     def test_mult_none(self):
         self.assertRaises(TypeError, self.calculator.multiplication, None, None)
 
@@ -55,6 +65,8 @@ class TestCalculator(unittest.TestCase):
 
     def test_mult_negative(self):
         self.assertEqual(self.calculator.multiplication(-5, -1), 5)
+
+    # test for subtraction
 
     def test_sub(self):
         self.assertEqual(self.calculator.subtraction(1, 2), -1)
@@ -65,23 +77,37 @@ class TestCalculator(unittest.TestCase):
     def test_sub_TypeError(self):
         self.assertRaises(TypeError, self.calculator.subtraction, 1, '1')
 
+    def test_sub_list_TypeError(self):
+        self.assertRaises(TypeError, self.calculator.subtraction, 1, [1])
+
     def test_sub_none(self):
         self.assertRaises(TypeError, self.calculator.subtraction, None, None)
 
     def test_sub_float(self):
         self.assertEqual(self.calculator.subtraction(1.5, 2.5), -1.0)
 
+    def test_sub_periodic(self):
+        self.assertAlmostEqual(self.calculator.subtraction(1/3, 0.3), 0.03, delta=0.01)
+
     def test_sub_negative(self):
         self.assertEqual(self.calculator.subtraction(-5, -1), -4)
+
+    # test for division
 
     def test_div(self):
         self.assertEqual(self.calculator.division(1, 2), 0.5)
 
     def test_div_zero(self):
+        self.assertEqual(self.calculator.division(0, 432), 0)
+
+    def test_div_by_zero(self):
         self.assertEqual(self.calculator.division(1, 0), None)
 
     def test_div_TypeError(self):
         self.assertRaises(TypeError, self.calculator.division, 1, '1')
+
+    def test_div_list_TypeError(self):
+        self.assertRaises(TypeError, self.calculator.division, [1], '1')
 
     def test_div_none(self):
         self.assertRaises(TypeError, self.calculator.division, None, None)
@@ -92,6 +118,8 @@ class TestCalculator(unittest.TestCase):
     def test_div_negative(self):
         self.assertEqual(self.calculator.division(-5, -1), 5)
 
+    # test for nth_root
+
     def test_root(self):
         self.assertEqual(self.calculator.nth_root(81, 4), 3)
 
@@ -100,6 +128,9 @@ class TestCalculator(unittest.TestCase):
 
     def test_root_TypeError(self):
         self.assertRaises(TypeError, self.calculator.nth_root, 1, '1')
+
+    def test_root_list_TypeError(self):
+        self.assertRaises(TypeError, self.calculator.nth_root, 1, [1])
 
     def test_root_none(self):
         self.assertRaises(TypeError, self.calculator.nth_root, None, None)
@@ -110,14 +141,22 @@ class TestCalculator(unittest.TestCase):
     def test_root_negative(self):
         self.assertEqual(self.calculator.nth_root(-5, -1), -0.2)
 
+    # test for log
+
     def test_log(self):
         self.assertEqual(self.calculator.log(100, 10), 2)
+
+    def test_log_less_one(self):
+        self.assertEqual(self.calculator.log(6, 36), 0.5)
 
     def test_log_inf(self):
         self.assertEqual(self.calculator.log(1, math.inf), 0)
 
     def test_log_TypeError(self):
         self.assertRaises(TypeError, self.calculator.log, 1, '1')
+
+    def test_log_list_TypeError(self):
+        self.assertRaises(TypeError, self.calculator.log, [1], '1')
 
     def test_log_none(self):
         self.assertRaises(TypeError, self.calculator.log, None, None)
@@ -128,6 +167,8 @@ class TestCalculator(unittest.TestCase):
     def test_log_negative(self):
         self.assertRaises(ValueError, self.calculator.log, -5, -1)
 
+    # test for adsolute
+
     def test_ads(self):
         self.assertEqual(self.calculator.adsolute(1), 1)
 
@@ -136,6 +177,9 @@ class TestCalculator(unittest.TestCase):
 
     def test_ads_TypeError(self):
         self.assertRaises(TypeError, self.calculator.adsolute, '1')
+
+    def test_ads_list_TypeError(self):
+        self.assertRaises(TypeError, self.calculator.adsolute, [1])
 
     def test_ads_none(self):
         self.assertRaises(TypeError, self.calculator.adsolute, None)
@@ -146,6 +190,14 @@ class TestCalculator(unittest.TestCase):
     def test_ads_negative(self):
         self.assertEqual(self.calculator.adsolute(-5), 5)
 
+    def test_ads_negative(self):
+        self.assertEqual(self.calculator.adsolute(-538**123), 538**123)
+
+    def test_ads_negative_inf(self):
+        self.assertEqual(self.calculator.adsolute(-math.inf), math.inf)
+
+    # test for ln
+
     def test_ln(self):
         self.assertEqual(self.calculator.ln(math.e), 1)
 
@@ -154,6 +206,9 @@ class TestCalculator(unittest.TestCase):
 
     def test_ln_TypeError(self):
         self.assertRaises(TypeError, self.calculator.ln, '1')
+
+    def test_ln_list_TypeError(self):
+        self.assertRaises(TypeError, self.calculator.ln, ['1'])
 
     def test_ln_none(self):
         self.assertRaises(TypeError, self.calculator.ln, None)
@@ -164,6 +219,8 @@ class TestCalculator(unittest.TestCase):
     def test_ln_negative(self):
         self.assertRaises(ValueError, self.calculator.ln, -5)
 
+    # test for sqrt
+
     def test_sqrt(self):
         self.assertEqual(self.calculator.sqrt(81), 9)
 
@@ -172,6 +229,9 @@ class TestCalculator(unittest.TestCase):
 
     def test_sqrt_TypeError(self):
         self.assertRaises(TypeError, self.calculator.sqrt, '1')
+
+    def test_sqrt_list_TypeError(self):
+        self.assertRaises(TypeError, self.calculator.sqrt, [1])
 
     def test_sqrt_none(self):
         self.assertRaises(TypeError, self.calculator.sqrt, None)

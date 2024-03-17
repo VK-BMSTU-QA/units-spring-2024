@@ -50,17 +50,13 @@ afterEach(jest.clearAllMocks);
 describe('MainPage test', () => {
     it('should render correctly', async () => {
         const { asFragment } = render(<MainPage />);
-        await waitFor(() => {
-            expect(asFragment()).toMatchSnapshot();
-        });
+        expect(asFragment()).toMatchSnapshot();
     });
 
     it('should render correct title and time', async () => {
         const { getByText } = render(<MainPage />);
-        await waitFor(() => {
-            expect(getByText('VK Маркет')).toBeInTheDocument();
-            expect(getByText('01:23:45')).toBeInTheDocument();
-        });
+        expect(getByText('VK Маркет')).toBeInTheDocument();
+        expect(getByText('01:23:45')).toBeInTheDocument();
     });
 
     it('should work out the functions correctly', () => {
@@ -71,5 +67,8 @@ describe('MainPage test', () => {
         expect(updateCategories).toHaveBeenCalledTimes(0);
         fireEvent.click(categoryButton);
         expect(updateCategories).toHaveBeenCalledTimes(1);
+        expect(
+            categoryButton.classList.contains('categories__badge_selected')
+        ).toBeTruthy();
     });
 });
