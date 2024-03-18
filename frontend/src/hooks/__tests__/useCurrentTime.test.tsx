@@ -9,13 +9,13 @@ describe('useCurrentTime test', () => {
         jest.setSystemTime(date);
         const {result}  = renderHook(() => useCurrentTime());
 
-        expect(result.current).toBe('13:11:12');
+        expect(result.current).toBe('10:11:12');
 
         act(() => {
             jest.advanceTimersByTime(61000);
         });
 
-        expect(result.current).toBe("13:12:13");
+        expect(result.current).toBe("10:12:13");
     });
 });
 
