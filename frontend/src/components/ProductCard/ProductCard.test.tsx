@@ -24,3 +24,4 @@ it('Check ProductCard render correctly', () => {
 
     expect(rendered.asFragment()).toMatchSnapshot();
 });
+

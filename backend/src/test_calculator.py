@@ -124,3 +124,4 @@ class TestCalculator(unittest.TestCase):
             self.calculator.multiplication({})
 if __name__ == "__main__":
     unittest.main()
+
