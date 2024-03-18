@@ -15,4 +15,3 @@ describe('test UseCurrent hook', () => {
         expect(result.current).toBe(new Date().toLocaleTimeString('ru-RU'));
     });
 });
-

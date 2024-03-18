@@ -39,4 +39,3 @@ describe('Categories test', () => {
         expect(onCategoryClick).toHaveBeenCalledTimes(1);
     });
 });
-

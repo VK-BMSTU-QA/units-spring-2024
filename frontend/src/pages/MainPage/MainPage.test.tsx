@@ -57,4 +57,3 @@ describe('MainPage', () => {
         expect(updateCategories).toHaveBeenCalledTimes(1);
     });
 });
-

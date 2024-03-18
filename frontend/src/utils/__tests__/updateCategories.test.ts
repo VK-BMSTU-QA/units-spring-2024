@@ -12,4 +12,3 @@ describe('test update categories function', () => {
         );
     });
 });
-

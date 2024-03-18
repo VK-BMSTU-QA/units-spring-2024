@@ -42,4 +42,3 @@ describe('test applyCategories function', () => {
         expect(applyCategories(products, [])).toEqual(products);
     });
 });
-

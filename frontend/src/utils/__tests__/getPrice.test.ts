@@ -6,4 +6,3 @@ describe('test get price function', () => {
         expect(getPrice(325, '$')).toBe('325 $');
     });
 });
-
