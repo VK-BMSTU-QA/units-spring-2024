@@ -24,4 +24,7 @@ dist-ssr
 *.sln
 *.sw?
 
+*__pycache__
+*.coverage
+
 test-report.html

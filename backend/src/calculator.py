@@ -36,3 +36,4 @@ class Calculator:
 
     def nth_root(self, x, n):
         return x ** (1. / n)
+
