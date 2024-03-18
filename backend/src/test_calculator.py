@@ -81,11 +81,13 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.division(-1, 2), -0.5)
         self.assertAlmostEqual(self.calculator.division(-1, -2), 0.5)
 
+        self.assertAlmostEqual(self.calculator.division(1.2, 2), 0.6)
+
+        self.assertAlmostEqual(self.calculator.division(10, 3), 3.33333, places=4)
+
         self.assertEqual(self.calculator.division(complex(0, 1), complex(0, 1)), complex(1, 0))
 
         self.assertEqual(self.calculator.division(math.inf, 10), math.inf)
-
-        self.assertAlmostEqual(self.calculator.division(1.2, 2), 0.6)
 
         with self.assertRaises(TypeError):
             self.calculator.division("", 1)
@@ -133,6 +135,18 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.calculator.ln(0)
 
+    def test_log(self):
+        self.assertEqual(self.calculator.log(math.e, math.e), 1)
+        self.assertEqual(self.calculator.log(4, 2), 2)
+        self.assertEqual(self.calculator.log(4, 2), 2)
+
+        self.assertEqual(self.calculator.log(0.5, 2), -1)
+
+        self.assertEqual(self.calculator.log(math.inf, 2), math.inf)
+
+        with self.assertRaises(TypeError):
+            self.calculator.log("string", 10)
+
     def test_sqrt(self):
         self.assertAlmostEqual(self.calculator.sqrt(1), 1)
         self.assertAlmostEqual(self.calculator.sqrt(0), 0)
@@ -144,6 +158,20 @@ class TestCalculator(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             self.assertEqual(self.calculator.sqrt(""))
+
+    def test_nth_root(self):
+        self.assertAlmostEqual(self.calculator.nth_root(1, 2), 1)
+        self.assertAlmostEqual(self.calculator.nth_root(0, 2), 0)
+        self.assertAlmostEqual(self.calculator.nth_root(1000, 3), 10)
+
+        self.assertAlmostEqual(self.calculator.nth_root(1000, -3), 0.1)
+
+        self.assertAlmostEqual(self.calculator.nth_root(-1, 2), complex(0, 1))
+
+        self.assertEqual(self.calculator.nth_root(math.inf, 100), math.inf)
+
+        with self.assertRaises(TypeError):
+            self.assertEqual(self.calculator.nth_root(""))
         
 
 
