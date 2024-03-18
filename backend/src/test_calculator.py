@@ -86,6 +86,7 @@ class TestCalculator(unittest.TestCase):
         for test in tests:
             self.assertRaises(TypeError, self.calculator.addition, *test)
 
+
     def test_multiplication__int(self):
         tests = [
             [[2, 3], 6, int],
@@ -157,6 +158,7 @@ class TestCalculator(unittest.TestCase):
 
         for test in tests:
             self.assertRaises(TypeError, self.calculator.multiplication, *test)
+
 
     def test_subtraction__int(self):
         tests = [
@@ -236,6 +238,7 @@ class TestCalculator(unittest.TestCase):
         for test in tests:
             self.assertRaises(TypeError, self.calculator.subtraction, *test)
 
+
     def test_division__int(self):
         tests = [
             [[6, 3], 2, float],
@@ -313,6 +316,7 @@ class TestCalculator(unittest.TestCase):
         for test in tests:
             self.assertRaises(TypeError, self.calculator.division, *test)
 
+
     def test_absolute__int(self):
         tests = [
             [[-3], 3, int],
@@ -363,6 +367,7 @@ class TestCalculator(unittest.TestCase):
 
         for test in tests:
             self.assertRaises(TypeError, self.calculator.absolute, *test)
+
 
     def test_degree__int(self):
         tests = [
@@ -425,6 +430,7 @@ class TestCalculator(unittest.TestCase):
 
     def test_degree__nan(self):
         nan = float("nan")
+
         tests = [
             [nan, nan],
             [2, nan],
@@ -455,6 +461,7 @@ class TestCalculator(unittest.TestCase):
 
         for test in tests:
             self.assertRaises(TypeError, self.calculator.degree, *test)
+
 
     def test_ln__positive(self):
         tests = [
@@ -495,6 +502,7 @@ class TestCalculator(unittest.TestCase):
 
         for test in tests:
             self.assertRaises(TypeError, self.calculator.ln, *test)
+
 
     def test_log(self):
         tests = [
@@ -557,6 +565,7 @@ class TestCalculator(unittest.TestCase):
         for test in tests:
             self.assertRaises(ValueError, self.calculator.log, *test)
 
+
     def test_sqrt(self):
         positive_inf = float("inf")
         negative_inf = float("-inf")
@@ -597,6 +606,7 @@ class TestCalculator(unittest.TestCase):
 
         for test in tests:
             self.assertRaises(TypeError, self.calculator.sqrt, *test)
+
 
     def test_nth_root(self):
         positive_inf = float("inf")
