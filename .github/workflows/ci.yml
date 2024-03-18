@@ -49,3 +49,4 @@ jobs:
         run: |
           coverage run -m unittest src/test_calculator.py
           coverage report -m
+
