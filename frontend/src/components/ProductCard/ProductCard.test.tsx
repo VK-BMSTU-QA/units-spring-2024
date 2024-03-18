@@ -15,6 +15,15 @@ const testProduct: Product = {
     imgUrl: '/iphone.png',
 };
 
+const testProductWithoutImg: Product = {
+    id: 1,
+    name: 'IPhone 14 Pro',
+    description: 'Latest iphone, buy it now',
+    price: 999,
+    priceSymbol: '$',
+    category: 'Электроника',
+};
+
 jest.mock('../../utils/getPrice', () => ({
     getPrice: jest.fn(() => '999 $'),
 }));
@@ -41,5 +50,20 @@ describe('ProductСard test', () => {
         );
 
         expect(getPrice).toHaveBeenCalledTimes(1);
+    });
+
+    it('should render image when imgUrl is provided', () => {
+        const { getByAltText } = render(<ProductCard {...testProduct} />);
+
+        const imgElement = getByAltText(testProduct.name);
+        expect(imgElement).toBeInTheDocument();
+        expect(imgElement).toHaveAttribute('src', testProduct.imgUrl);
+    });
+
+    it('should not render image when imgUrl is not provided', () => {
+        const { queryByAltText } = render(<ProductCard {...testProductWithoutImg} />);
+
+        const imgElement = queryByAltText(testProductWithoutImg.name);
+        expect(imgElement).toBeNull();
     });
 });

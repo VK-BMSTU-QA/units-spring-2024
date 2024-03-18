@@ -66,4 +66,18 @@ describe('MainPage test', () => {
         expect(applyCategories).toHaveBeenCalledTimes(1);
         expect(updateCategories).toHaveBeenCalledTimes(0);
     });
+
+    it('should render the title, correct number of products, time', () => {
+        const expectedProductsCount = 1;
+
+        const { getByText } = render(<MainPage />);
+
+        const titleElement = getByText('VK Маркет');
+        const timeElement = getByText('12:00:00');
+        const productCardElements = document.getElementsByClassName('product-card');
+
+        expect(titleElement).toBeTruthy();
+        expect(timeElement).toBeTruthy();
+        expect(productCardElements).toHaveLength(expectedProductsCount);
+    });
 });
