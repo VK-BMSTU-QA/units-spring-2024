@@ -28,3 +28,4 @@ export const ProductCard: FC<Product> = ({
         </div>
     );
 };
+

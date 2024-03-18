@@ -2,29 +2,29 @@ import { applyCategories } from '../applyCategories';
 import { Product, Category, PriceSymbol } from '../../types'
 
 describe('test apply Categories function', () => {
-    const prod1 = {
+    const prod1: Product = {
         id: 1,
         name: 'пельмени',
         description: 'вкусняшка',
         price: 300,
-        priceSymbol: '$' as PriceSymbol,
-        category: 'Электроника' as Category,
+        priceSymbol: '$',
+        category: 'Электроника',
     };
-    const prod2 = {
+    const prod2: Product = {
         id: 2,
         name: 'пельмени',
         description: 'вкусняшка',
         price: 300,
-        priceSymbol: '$' as PriceSymbol,
-        category: 'Для дома' as Category,
+        priceSymbol: '$',
+        category: 'Для дома',
     };
-    const prod3 = {
+    const prod3: Product = {
         id: 3,
         name: 'пельмени',
         description: 'вкусняшка',
         price: 300,
-        priceSymbol: '$' as PriceSymbol,
-        category: 'Одежда' as Category,
+        priceSymbol: '$',
+        category: 'Одежда',
     };
     it('should return array of Products by array of Categories', () => {
         expect(applyCategories([prod1], ['Электроника' as Category])).toStrictEqual([prod1]);

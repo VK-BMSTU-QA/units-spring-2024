@@ -8,3 +8,4 @@ export const applyCategories = (
 
     return products.filter((product) => categories.includes(product.category));
 };
+

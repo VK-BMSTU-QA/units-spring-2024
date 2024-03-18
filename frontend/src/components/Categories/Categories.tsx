@@ -31,3 +31,4 @@ export const Categories: FC<CategoriesProps> = ({
         ))}
     </div>
 );
+

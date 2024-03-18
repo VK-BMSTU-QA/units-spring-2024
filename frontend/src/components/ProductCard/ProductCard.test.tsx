@@ -97,5 +97,7 @@ describe('ProductCard test', () => {
             'product-card__image'
         );
         expect(rendered.getByText('пельмени')).toBeVisible();
+        expect(getPrice).toBeCalledTimes(1);
     });
 });
+

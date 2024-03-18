@@ -75,13 +75,19 @@ describe('MainPage test', () => {
         const rendered = render(<MainPage />);
 
         let category = rendered.getAllByText('Электроника')[0];
-
+        
         expect(updateCategories).toHaveBeenCalledTimes(0);
         fireEvent.click(category);
         expect(updateCategories).toHaveBeenCalledTimes(1);
 
         expect(updateCategories).toHaveBeenCalledWith([], 'Электроника');
 
+    });
+
+    it('should render header time', () => {
+        const {container} = render(<MainPage />);
+        const elm = container.querySelector('h3');
+        expect(elm).toBeInTheDocument();
     });
 
     it('should call click handler when category clicked', () => {
@@ -97,3 +103,4 @@ describe('MainPage test', () => {
 
 
 });
+

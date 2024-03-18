@@ -9,12 +9,12 @@ describe('useCurrentTime test', () => {
         jest.setSystemTime(date);
         const {result}  = renderHook(() => useCurrentTime());
 
-        expect(result.current).toBe(date.toLocaleTimeString('ru-RU'));
+        expect(result.current).toBe('13:11:12');
 
         act(() => {
             jest.advanceTimersByTime(61000);
         });
 
-        expect(result.current).toBe(new Date('23 Feb 2003 10:12:13 GMT').toLocaleTimeString('ru-RU'));
+        expect(result.current).toBe("13:12:13");
     });
 });

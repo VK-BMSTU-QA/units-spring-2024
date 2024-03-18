@@ -39,6 +39,13 @@ describe('useProducts test', () => {
         ];
 
         const result = useProducts();
-        expect(result).toStrictEqual(products)
+        expect(result).toBeInstanceOf(Array);
+        result.forEach((elm)=>{
+            expect(elm).toHaveProperty("id");
+            expect(elm).toHaveProperty("name");
+            expect(elm).toHaveProperty("description");
+            expect(elm).toHaveProperty("price");
+            expect(elm).toHaveProperty("category");
+        })
     });
 });

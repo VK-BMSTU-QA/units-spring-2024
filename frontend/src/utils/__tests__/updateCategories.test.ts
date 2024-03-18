@@ -4,26 +4,20 @@ import { Category, PriceSymbol } from '../../types'
 afterEach(jest.clearAllMocks);
 describe('test update Categories function', () => {
     it('should return updated array of Categories', () => {
-        expect(updateCategories(['Электроника' as Category, 'Одежда' as Category, 'Для дома' as Category], 'Электроника' as Category)).toEqual(['Одежда' as Category, 'Для дома' as Category]);
-        // expect(updateCategories([prod1, prod2], ['Одежда' as Category])).toStrictEqual([]);
-        // expect(updateCategories([prod1, prod2, prod3, prod3], ['Одежда' as Category])).toStrictEqual([prod3, prod3]);
-        // expect(updateCategories([prod1, prod2, prod3, prod3], [])).toStrictEqual([prod1, prod2, prod3, prod3]);
+        expect(updateCategories(['Электроника', 'Одежда', 'Для дома'], 'Электроника')).toEqual(['Одежда', 'Для дома']);
     });
 
     it('should return updated array of Categories', () => {
-        expect(updateCategories(['Одежда' as Category, 'Для дома' as Category], 'Электроника' as Category)).toStrictEqual(['Одежда' as Category, 'Для дома' as Category, 'Электроника' as Category]);
+        expect(updateCategories(['Одежда', 'Для дома'], 'Электроника')).toStrictEqual(['Одежда', 'Для дома', 'Электроника']);
     });
 
     it('should return updated array of Categories', () => {
-        expect(updateCategories([], 'Для дома' as Category)).toStrictEqual(['Для дома' as Category]);
+        expect(updateCategories([], 'Для дома')).toStrictEqual(['Для дома']);
     });
     it('should return updated array of Categories', () => {
-        expect(updateCategories(['Для дома' as Category], 'Для дома' as Category)).toStrictEqual([]);
+        expect(updateCategories(['Для дома'], 'Для дома')).toStrictEqual([]);
     });
     it('should return updated array of Categories', () => {
-        expect(updateCategories([], 'Одежда' as Category)).toStrictEqual(['Одежда' as Category]);
+        expect(updateCategories([], 'Одежда')).toStrictEqual(['Одежда']);
     });
-    // it('', () => {
-
-    // });
 });
