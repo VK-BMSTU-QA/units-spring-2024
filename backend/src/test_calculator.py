@@ -50,8 +50,11 @@ class TestCalculator(unittest.TestCase):
     def test_div_floats(self):
         self.assertAlmostEqual(self.calculator.division(0.2, 0.1), 2.0)
     
-    # def test_div_by_zero(self):
-    #     self.assertRaises(ZeroDivisionError, self.calculator.division, 12, 0)
+    def test_div_zero(self):
+        self.assertEqual(self.calculator.division(0, 12), 0)
+
+    def test_div_by_zero(self):
+        self.assertIsNone(self.calculator.division(12, 0))
     
     def test_div_negatives(self):
         self.assertEqual(self.calculator.division(-2, -1), 2)
