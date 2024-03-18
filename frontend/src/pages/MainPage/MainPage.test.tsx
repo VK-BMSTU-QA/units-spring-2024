@@ -48,10 +48,10 @@ describe('MainPage', () => {
     it('should render header', () => {
         const { container } = render(<MainPage />);
         const headerElement = container.getElementsByClassName('main-page__title');
-        const paramsElement = container.getElementsByClassName('main-page__parameters');
+        const categoriesElement = container.getElementsByClassName('categories__badge');
 
         expect(headerElement.length).toBe(1);
-        expect(paramsElement.length).toBe(1);
+        expect(categoriesElement.length).toBe(3);
     });
 
     it('should render current time', () => {
