@@ -25,3 +25,8 @@ dist-ssr
 *.sw?
 
 test-report.html
+
+# my 
+backend/venv/
+backend/src/__pycache__/
+.coverage
