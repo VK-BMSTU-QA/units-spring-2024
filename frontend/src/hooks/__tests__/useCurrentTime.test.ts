@@ -7,19 +7,19 @@ describe('test useCurrentTime', () => {
 
         const { result } = renderHook(() => useCurrentTime());
 
-        expect(result.current).toBe('0:00:00');
+        expect(result.current).toBe('00:00:00');
 
         act(() => {
             jest.advanceTimersByTime(1000);
         });
 
-        expect(result.current).toBe('0:00:01');
+        expect(result.current).toBe('00:00:01');
 
         act(() => {
             jest.advanceTimersByTime(2000);
         });
 
-        expect(result.current).toBe('0:00:03');
+        expect(result.current).toBe('00:00:03');
 
         jest.useRealTimers();
     });
