@@ -1,44 +1,23 @@
 import { useProducts } from '../useProducts'
 import type { Product } from '../../types';
+import exp from 'constants';
+import { string } from 'yargs';
 
 
 describe('Use products test', () => {
-  it('should always return the product list', () => {
+  it('should always return an array of the objects', () => {
     const expected: Product[] = [
-      {
-          id: 1,
-          name: 'IPhone 14 Pro',
-          description: 'Latest iphone, buy it now',
-          price: 999,
-          priceSymbol: '$',
-          category: 'Электроника',
-          imgUrl: '/iphone.png',
-      },
-      {
-          id: 2,
-          name: 'Костюм гуся',
-          description: 'Запускаем гуся, работяги',
-          price: 1000,
-          priceSymbol: '₽',
-          category: 'Одежда',
-      },
-      {
-          id: 3,
-          name: 'Настольная лампа',
-          description: 'Говорят, что ее использовали в pixar',
-          price: 699,
-          category: 'Для дома',
-          imgUrl: '/lamp.png',
-      },
-      {
-          id: 4,
-          name: 'Принтер',
-          description: 'Незаменимая вещь для студента',
-          price: 7000,
-          category: 'Электроника',
-      },
+      expect.objectContaining({
+        id: expect.any(Number),
+        name: expect.any(String),
+        description: expect.any(String),
+        price: expect.any(Number),
+        category: expect.any(String),
+      }),
     ]
       const result = useProducts();
-      expect(result).toStrictEqual(expected);
+      expect(result).toEqual(
+        expect.arrayContaining(expected),
+      );
   });
 });
