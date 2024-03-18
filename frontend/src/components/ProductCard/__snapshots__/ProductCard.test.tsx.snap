@@ -1,6 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Categories test should render correctly 1`] = `
+exports[`Categories test should render correctly with a picture 1`] = `
+<DocumentFragment>
+  <div
+    class="product-card"
+  >
+    <div
+      class="product-card__text"
+    >
+      <h2
+        class="product-card__name"
+      >
+        Aspire ES 15
+      </h2>
+      <div
+        class="product-card__description"
+      >
+        Ноутбук
+      </div>
+      <h1
+        class="product-card__price"
+      />
+      <div
+        class="product-card__category"
+      >
+        Электроника
+      </div>
+    </div>
+    <img
+      alt="Aspire ES 15"
+      class="product-card__image"
+      src="https://picsum.photos/200/300"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Categories test should render correctly without a picture 1`] = `
 <DocumentFragment>
   <div
     class="product-card"

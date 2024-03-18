@@ -1,9 +1,12 @@
 import { useCurrentTime } from '../useCurrentTime';
 import { renderHook } from '@testing-library/react';
 
+const testDate = "07/03/2024";
+const testTime = "20:00:00";
+
 beforeAll(() => {
     jest.useFakeTimers();
-    jest.setSystemTime(new Date("07/03/2024 20:00"))
+    jest.setSystemTime(new Date(testDate + " " + testTime))
 });
 
 afterAll(() => {
@@ -16,7 +19,7 @@ describe('test use current time function', () => {
         expect(
             result.current
         ).toStrictEqual(
-            new Date().toLocaleTimeString('ru-RU')
+            testTime
         );
     });
 });

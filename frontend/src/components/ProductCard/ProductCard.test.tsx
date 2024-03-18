@@ -12,9 +12,18 @@ jest.mock('../../utils/getPrice', () => ({
 afterEach(jest.clearAllMocks);
 
 describe('Categories test', () => {
-    it('should render correctly', () => {
+    it('should render correctly without a picture', () => {
         const rendered = render(<ProductCard
             {...testProduct}
+            priceSymbol='₽'
+             />);
+
+        expect(rendered.asFragment()).toMatchSnapshot();
+    });
+    it('should render correctly with a picture', () => {
+        const rendered = render(<ProductCard
+            {...testProduct}
+            imgUrl='https://picsum.photos/200/300'
             priceSymbol='₽'
              />);
 
