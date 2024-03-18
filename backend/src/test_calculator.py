@@ -666,7 +666,7 @@ class TestCalculator(unittest.TestCase):
         ]
 
         for test in tests:
-                    self.assertRaises(TypeError, self.calculator.nth_root, *test)
+            self.assertRaises(TypeError, self.calculator.nth_root, *test)
 
 if __name__ == "__main__":
     unittest.main()
