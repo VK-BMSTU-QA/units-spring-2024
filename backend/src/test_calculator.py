@@ -1,5 +1,6 @@
 import unittest
-from src.calculator import Calculator
+# from src.calculator import Calculator
+from calculator import Calculator
 from math import exp, sqrt
 
 
