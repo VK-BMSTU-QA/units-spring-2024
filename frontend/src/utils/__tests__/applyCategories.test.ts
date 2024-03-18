@@ -60,3 +60,4 @@ describe('test apply Categories function', () => {
         expect(applyCategories([prod1, prod2, prod3, prod3], [])).toStrictEqual([prod1, prod2, prod3, prod3]);
     });
 });
+

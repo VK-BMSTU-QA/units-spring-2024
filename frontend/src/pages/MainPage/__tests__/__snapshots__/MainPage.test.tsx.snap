@@ -161,3 +161,4 @@ exports[`MainPage test should render correctly 1`] = `
   </div>
 </DocumentFragment>
 `;
+
