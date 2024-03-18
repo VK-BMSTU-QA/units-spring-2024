@@ -45,6 +45,30 @@ describe('MainPage', () => {
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 
+    it('should render header', () => {
+        const { container } = render(<MainPage />);
+        const headerElement = container.getElementsByClassName('main-page__title');
+        const categoriesElement = container.getElementsByClassName('categories__badge');
+
+        expect(headerElement.length).toBe(1);
+        expect(categoriesElement.length).toBe(3);
+    });
+
+    it('should render current time', () => {
+        const { getByText } = render(<MainPage />);
+        const timeElement = getByText(/\d{2}:\d{2}:\d{2}/)
+
+        expect(timeElement).toBeInTheDocument();
+    });
+
+    it('should render expected number of products', () => {
+        const { container } = render(<MainPage />);
+        const productElements = container.getElementsByClassName('product-card');
+
+        // Замените 3 на ожидаемое количество продуктов
+        expect(productElements).toHaveLength(2);
+    });
+
     it('on click called', () => {
         const rendered = render(<MainPage />);
 
@@ -53,9 +77,11 @@ describe('MainPage', () => {
         });
 
         expect(updateCategories).toHaveBeenCalledTimes(0);
+        expect(categoryButton).not.toHaveClass('categories__badge_selected');
 
         fireEvent.click(categoryButton);
 
         expect(updateCategories).toHaveBeenCalledTimes(1);
+        expect(categoryButton).toHaveClass('categories__badge_selected');
     });
 });
