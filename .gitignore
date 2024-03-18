@@ -16,7 +16,6 @@ dist-ssr
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-backend/src/__pycache__
 .idea
 .DS_Store
 *.suo
@@ -26,3 +25,5 @@ backend/src/__pycache__
 *.sw?
 
 test-report.html
+backend/src/.coverage
+backend/src/__pycache__

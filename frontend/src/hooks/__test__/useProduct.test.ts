@@ -8,7 +8,11 @@ describe('test use products hook', () => {
         expect(products).toBeInstanceOf(Array);
 
         products.forEach((product) => {
-            expect(product as Product);
+            expect(product).toHaveProperty('id');
+            expect(product).toHaveProperty('name');
+            expect(product).toHaveProperty('description');
+            expect(product).toHaveProperty('price');
+            expect(product).toHaveProperty('category');
         });
     });
 });

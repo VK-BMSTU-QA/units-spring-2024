@@ -8,7 +8,7 @@ export const useCurrentTime = () => {
     useEffect(() => {
         const interval = setInterval(
             () => setCurrentTime(new Date().toLocaleTimeString('ru-RU')),
-            500
+            1000
         );
         return () => clearInterval(interval);
     });
