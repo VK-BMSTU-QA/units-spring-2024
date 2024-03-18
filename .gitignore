@@ -6,8 +6,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+.coverage
 
 node_modules
+__pycache__
 dist
 coverage
 dist-ssr
