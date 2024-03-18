@@ -1,7 +1,7 @@
 import unittest
 import math
-#from src.calculator import Calculator
-from calculator import Calculator
+from src.calculator import Calculator
+#from calculator import Calculator
 
 
 class TestCalculator(unittest.TestCase):
@@ -208,6 +208,9 @@ class TestCalculator(unittest.TestCase):
 
     def test_division_by_fraction_negative_divisible(self):
         self.assertAlmostEqual(self.calculator.division(-5, 2.5), -2, places=7)
+    
+    def test_division_result_is_inf_fraction(self):
+        self.assertAlmostEqual(self.calculator.division(10, 3), 3.3333333333333335, places=7)
 
     def test_division_none(self):
         with self.assertRaises(Exception) as cm:

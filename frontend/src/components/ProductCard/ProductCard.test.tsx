@@ -8,7 +8,7 @@ describe('Product card test', () => {
     it('should render correctly', () => {
         const rendered = render(
             <ProductCard
-                name={'name'}
+                name="name"
                 description={'desc'}
                 category={'Одежда'}
                 price={123}
@@ -23,7 +23,7 @@ describe('Product card test', () => {
     test('does not render image if imgUrl is not provided', () => {
         const rendered = render(
             <ProductCard
-                name={'name'}
+                name="name"
                 description={'desc'}
                 category={'Одежда'}
                 price={123}
