@@ -2,7 +2,7 @@ import { useCurrentTime } from "../useCurrentTime";
 import { renderHook, act } from '@testing-library/react';
 
 beforeEach(() => {
-  jest.useFakeTimers();
+  jest.useFakeTimers().setSystemTime(new Date('2024-03-18 00:00:00'));
 });
 
 afterEach(() => {
@@ -13,23 +13,31 @@ afterEach(() => {
 describe("test useCurrentTime function", () => {
     it.each([
        {
-        times: 1,
+        timeSecond: 1,
+        expectedTime: '00:00:01',
        },
        {
-        times: 10,
+        timeSecond: 100,
+        expectedTime: '00:01:40',
        },
        {
-        times: 100,
+        timeSecond: 3600,
+        expectedTime: '01:00:00',
+       },
+       {
+        timeSecond: 24*60*60,
+        expectedTime: '00:00:00',
        }
-      ])('useCurrentTime with $dateMock', ({times}) => {
+      ])('useCurrentTime with $timeSecond, $expectedTime', ({timeSecond, expectedTime}) => {
         const { result } = renderHook(() => useCurrentTime());
-
-        expect(result.current).toBe(new Date().toLocaleTimeString('ru-RU'));
+        
+        expect(result.current).toBe('00:00:00');
 
         act(() => {
-            jest.advanceTimersByTime(1000 * times);
+            jest.advanceTimersByTime(1000 * timeSecond);
         });
 
-        expect(result.current).toBe(new Date().toLocaleTimeString('ru-RU'));
+
+        expect(result.current).toBe(expectedTime);
       });
 });

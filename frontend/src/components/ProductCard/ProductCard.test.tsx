@@ -28,19 +28,19 @@ describe('ProductCard test', () => {
              />);
 
         expect(rendered.asFragment()).toMatchSnapshot();
+
+        expect(rendered.queryByRole('img')).toBeTruthy();
     });
 
     it('should render correctly without imgUrl', () => {
         const rendered = render(<ProductCard 
-            id={testProduct.id}
-            name={testProduct.name}
-            description={testProduct.description}
-            price={testProduct.price}
-            priceSymbol={testProduct.priceSymbol}
-            category={testProduct.category}
+            {...testProduct} 
+            imgUrl={undefined}
              />);
 
         expect(rendered.asFragment()).toMatchSnapshot();
+
+        expect(rendered.queryByRole('img')).toBeNull();
     });
 
     it('should getPrice called', () => {

@@ -40,6 +40,20 @@ describe('Categories test', () => {
         expect(rendered.asFragment()).toMatchSnapshot();
     });
 
+    it('should render the title, current time and correct number of products', () => {
+        const expectedProductsCount = testProducts.length;
+
+        const rendered = render(<MainPage />);
+
+        const titleElement = rendered.getByText('VK Маркет');
+        const timeElement = rendered.getByText('18:00:00');
+        const productCardElements = document.getElementsByClassName('product-card');
+
+        expect(titleElement).toBeTruthy();
+        expect(timeElement).toBeTruthy();
+        expect(productCardElements).toHaveLength(expectedProductsCount);
+    });
+
     it('should call useProducts, useCurrentTime, applyCategories', () => {
         const rendered = render(<MainPage />);
 
@@ -51,14 +65,8 @@ describe('Categories test', () => {
     it('should call updateCategories onClick', () => {
         const rendered = render(<MainPage />);
   
-        const allCategories = rendered.getAllByText(testProducts[0].category)
-
-        for (const target of allCategories) {
-            if (target.classList.contains('categories__badge'))  {
-                fireEvent.click(target);
-                break;
-            }
-        }
+        const categoryButton = rendered.getByText('Одежда', {selector: '.categories__badge'});  
+        fireEvent.click(categoryButton);
 
         expect(updateCategories).toBeCalledTimes(1);
     });
