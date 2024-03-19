@@ -10,7 +10,7 @@ class TestCalculator(unittest.TestCase):
     def test_add(self):
         self.assertEqual(self.calculator.addition(1, 2), 3)
         self.assertEqual(self.calculator.addition('a', 'b'), 'ab')
-        self.assertAlmostEqual(self.calculator.addition(1.1, 2.1), 3.3, places=3)
+        self.assertAlmostEqual(self.calculator.addition(1.1, 2.1), 3.2, places=3)
         self.assertRaises(TypeError, self.calculator.addition, {1}, {1})
         self.assertRaises(TypeError, self.calculator.addition, {1}, 1)
         self.assertRaises(TypeError, self.calculator.addition('a', 3))
@@ -96,9 +96,9 @@ class TestCalculator(unittest.TestCase):
         self.assertRaises(TypeError, self.calculator.degree, {3}, 3)
 
     def test_ln(self):
-        self.assertEqual(self.calculator.ln(exp(2)), 2)
-        self.assertEqual(self.calculator.ln(exp(0)), 0)
-        self.assertEqual(self.calculator.ln(exp(-1)), -1)
+        self.assertEqual(self.calculator.ln(math.exp(2)), 2)
+        self.assertEqual(self.calculator.ln(math.exp(0)), 0)
+        self.assertEqual(self.calculator.ln(math.exp(-1)), -1)
         self.assertRaises(ValueError, self.calculator.ln, -1)
         self.assertRaises(TypeError, self.calculator.ln, None)
         self.assertRaises(TypeError, self.calculator.ln, "3")
