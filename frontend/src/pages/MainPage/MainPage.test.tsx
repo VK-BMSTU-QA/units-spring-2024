@@ -3,6 +3,7 @@ import { render, fireEvent, getAllByText } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MainPage } from './MainPage';
 import { updateCategories } from '../../utils';
+import { useCurrentTime } from '../../hooks';
 
 jest.mock('../../hooks', () => ({
     useProducts: jest.fn(() => [
@@ -56,7 +57,7 @@ describe('MainPage', () => {
 
     it('should render current time', () => {
         const { getByText } = render(<MainPage />);
-        const timeElement = getByText(/\d{2}:\d{2}:\d{2}/)
+        const timeElement = getByText(useCurrentTime())
 
         expect(timeElement).toBeInTheDocument();
     });
