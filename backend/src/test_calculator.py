@@ -1,6 +1,6 @@
 import unittest
 import math
-from src.calculator import Calculator
+from calculator import Calculator
 
 
 class TestCalculator(unittest.TestCase):
@@ -14,8 +14,8 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.addition(-1, -2), -3)
     def test_add_float(self):
         self.assertAlmostEqual(self.calculator.addition(1.5, 2.3), 3.8)
-    # def test_add_strings(self):
-    #     self.assertRaises(TypeError, self.calculator.addition, "1", "2")
+    def test_add_strings(self):
+        self.assertRaises(TypeError, self.calculator.addition, "1", "2")
     
     def test_sub_int(self):
         self.assertEqual(self.calculator.subtraction(1, 2), -1)
