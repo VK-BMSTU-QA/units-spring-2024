@@ -7,16 +7,19 @@ exports[`Categories test should render correctly 1`] = `
   >
     <div
       class="categories__badge"
+      data-testid="test-Одежда"
     >
       Одежда
     </div>
     <div
       class="categories__badge"
+      data-testid="test-Для дома"
     >
       Для дома
     </div>
     <div
       class="categories__badge"
+      data-testid="test-Электроника"
     >
       Электроника
     </div>
