@@ -9,14 +9,19 @@ class TestCalculator(unittest.TestCase):
 
     def test_add(self):
         self.assertEqual(self.calculator.addition(1, 2), 3)
-        self.assertEqual(self.calculator.addition('a', 'b'), 'ab')
-        self.assertAlmostEqual(self.calculator.addition(1.1, 2.1), 3.2, places=3)
-        self.assertRaises(TypeError, self.calculator.addition, {1}, {1})
-        self.assertRaises(TypeError, self.calculator.addition, {1}, 1)
-        self.assertRaises(TypeError, self.calculator.addition("a", 3))
-        self.assertRaises(TypeError, self.calculator.addition, None, 1)
+        self.assertEqual(self.calculator.addition(-1, 2), 1)
+        self.assertEqual(self.calculator.addition(0, 2), 2)
+        self.assertAlmostEqual(self.calculator.addition(1.2, 2.4), 3.6, places=3)
+        self.assertRaises(TypeError, self.calculator.addition, None, 3)
         self.assertRaises(TypeError, self.calculator.addition, None, None)
-            
+        self.assertRaises(TypeError, self.calculator.addition, "3", 3)
+        self.assertEqual(self.calculator.addition("3", "3"), "33")
+        self.assertRaises(TypeError, self.calculator.addition, [3], 3)
+        self.assertEqual(self.calculator.addition([3], [3]), [3, 3])
+        self.assertEqual(self.calculator.addition((3), 3), 6)
+        self.assertEqual(self.calculator.addition((3), (3)), 6)
+        self.assertRaises(TypeError, self.calculator.addition, {3}, {3})
+        self.assertRaises(TypeError, self.calculator.addition, {3}, 3)
 
     def test_sub(self):
         self.assertEqual(self.calculator.subtraction(3,1), 2)
