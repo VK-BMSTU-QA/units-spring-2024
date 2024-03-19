@@ -89,6 +89,9 @@ class TestCalculator(unittest.TestCase):
     def test_div_by_zero(self):
         self.assertEqual(self.calculator.division(6, 0), None)
 
+    def test_div_zero(self):
+        self.assertEqual(self.calculator.division(0, 6), 0)
+
     def test_div_str(self):
         self.assertRaises(TypeError, self.calculator.division, 'a', 2)
 
