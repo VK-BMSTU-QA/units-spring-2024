@@ -26,4 +26,8 @@ describe('test apply categories function', () => {
             },
         ]);
     });
+
+    it('should return a categories of products type', () => {
+        expect(applyCategories(products, [])).toBe(products);
+    });
 });
