@@ -13,7 +13,7 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.addition(1.1, 2.1), 3.2, places=3)
         self.assertRaises(TypeError, self.calculator.addition, {1}, {1})
         self.assertRaises(TypeError, self.calculator.addition, {1}, 1)
-        self.assertRaises(TypeError, self.calculator.addition('a', 3))
+        self.assertRaises(TypeError, self.calculator.addition("a", 3))
         self.assertRaises(TypeError, self.calculator.addition, None, 1)
         self.assertRaises(TypeError, self.calculator.addition, None, None)
             
