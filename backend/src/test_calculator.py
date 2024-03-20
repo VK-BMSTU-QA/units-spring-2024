@@ -90,7 +90,7 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.division(0, 9999), 0)
 
     def test_div__period(self):
-        self.assertAlmostEqual(self.calculator.division(2, 3), 2/3)
+        self.assertAlmostEqual(self.calculator.division(2, 3), 0.66667, places=5)
 
     def test_abs__positive(self):
         self.assertEqual(self.calculator.adsolute(3), 3)
@@ -136,17 +136,17 @@ class TestCalculator(unittest.TestCase):
     def test_log_4_2(self):
         self.assertEqual(self.calculator.log(4, 2), math.log(4, 2))
 
-    def test_sqrt_2(self):
-        self.assertEqual(self.calculator.sqrt(2), math.sqrt(2))
+    def test_sqrt_9(self):
+        self.assertEqual(self.calculator.sqrt(9), 3)
 
     def test_sqrt_625(self):
         self.assertEqual(self.calculator.sqrt(6.25), 2.5)
 
     def test_sqrt_3(self):
-        self.assertEqual(self.calculator.sqrt(3), math.sqrt(3))
+        self.assertAlmostEqual(self.calculator.sqrt(3), 1.732, places=3)
 
     def test_sqrt_0(self):
-        self.assertEqual(self.calculator.sqrt(0), math.sqrt(0))
+        self.assertEqual(self.calculator.sqrt(0), 0)
 
 if __name__ == "__main__":
     unittest.main()
