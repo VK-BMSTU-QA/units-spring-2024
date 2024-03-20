@@ -31,3 +31,4 @@ test-report.html
 __pycache__/
 *.py[cod]
 *$py.class
+.coverage
