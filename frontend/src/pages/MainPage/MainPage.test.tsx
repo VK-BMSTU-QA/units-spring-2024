@@ -10,24 +10,24 @@ jest.mock('../../hooks', () => ({
 }));
 
 describe('MainPage', () => {
-  it('рендерится без ошибок', () => {
+  it('renders without mistakes', () => {
     act(() => {
       render(<MainPage />);
     });
   });
 
-  it('отображает текущее время', () => {
+  it('shows current time', () => {
     render(<MainPage />);
     expect(screen.getByText('12:00 PM')).toBeInTheDocument();
   });
 
-  it('отображает категории', () => {
+  it('shows categories', () => {
     const { container, getByText } = render(<MainPage />);
     const categoryButton = container.querySelector('.categories__badge');
     expect(categoryButton).not.toBeNull();
   });
 
-  it('добавляет категорию в выбранные при клике', () => {
+  it('adds category on click', () => {
     const { container, getByText } = render(<MainPage />);
     const categoryButton = screen.getByText('Электроника', {selector: '.categories__badge'});
     expect(categoryButton).not.toBeNull();

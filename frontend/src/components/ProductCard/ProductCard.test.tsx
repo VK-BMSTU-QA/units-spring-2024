@@ -14,10 +14,11 @@ describe('ProductCard', () => {
         price: 100,
         priceSymbol: '$',
         category: 'Электроника',
-        imgUrl: 'https://example.com/test-image.jpg',
+        imgUrl: '/test-image.jpg',
     };
 
     const { asFragment } = render(<ProductCard {...product} />);
+    expect(asFragment().querySelectorAll('.product-card__image').length).toBe(1)
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -33,6 +34,7 @@ describe('ProductCard', () => {
     };
 
     const { asFragment } = render(<ProductCard {...productWithoutImage} />);
+    expect(asFragment().querySelectorAll('.product-card__image').length).toBe(0)
     expect(asFragment()).toMatchSnapshot();
   });
 });
