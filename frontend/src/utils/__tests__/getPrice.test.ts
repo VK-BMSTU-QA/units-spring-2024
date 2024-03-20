@@ -1,8 +1,13 @@
+import { PriceSymbol } from '../../types';
 import { getPrice } from '../getPrice';
 
 describe('test get price function', () => {
-    it('should return value with price symbol', () => {
-        expect(getPrice(100, '₽')).toBe('100 ₽');
-        expect(getPrice(325, '$')).toBe('325 $');
+    it.each([
+        [100, '₽', '100 ₽'],
+        [325, '$', '325 $'],
+        [0, '$', '0 $'],
+        [0, '₽', '0 ₽'],
+    ] as [number, PriceSymbol, string][])('should return value with price symbol', (value: number, symbol: PriceSymbol, expected: string) => {
+        expect(getPrice(value, symbol)).toBe(expected);
     });
 });
