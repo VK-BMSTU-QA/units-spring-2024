@@ -87,6 +87,7 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.degree(2, 10), 1024)
         self.assertEqual(self.calculator.degree(25, 0.5), 5)
         self.assertEqual(self.calculator.degree(2, -1), 0.5)
+        self.assertEqual(self.calculator.degree(-4, -1), -0.25)
         self.assertEqual(self.calculator.degree(0.04, 2), 0.0016)
         self.assertEqual(self.calculator.degree(0, 12), 0)
         self.assertEqual(self.calculator.degree(23, 0), 1)
