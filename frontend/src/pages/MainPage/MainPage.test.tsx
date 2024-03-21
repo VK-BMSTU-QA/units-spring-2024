@@ -57,7 +57,7 @@ describe('MainPage', () => {
 
     it('should render current time', () => {
         const { getByText } = render(<MainPage />);
-        const timeElement = getByText(/\d{2}:\d{2}:\d{2}/);
+        const timeElement = getByText('11:11:11');
 
         expect(timeElement).toBeInTheDocument();
     });
