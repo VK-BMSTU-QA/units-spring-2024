@@ -19,9 +19,26 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.addition(1, -2), -1)
         self.assertEqual(self.calculator.addition(-1, -2), -3)
 
+        self.assertAlmostEqual(self.calculator.addition(-1.2, 2.1), 0.9)
+        self.assertAlmostEqual(self.calculator.addition(1.1, -2.2), -1.1)
+        self.assertAlmostEqual(self.calculator.addition(-1.1, -2.1), -3.2)
+
     def test_addition_zero(self):
         self.assertEqual(self.calculator.addition(0, 2), 2)
         self.assertEqual(self.calculator.addition(2, 0), 2)
+
+        self.assertAlmostEqual(self.calculator.addition(0, 2.2), 2.2)
+        self.assertAlmostEqual(self.calculator.addition(2.2, 0), 2.2)
+
+        self.assertEqual(self.calculator.addition(0, -2), -2)
+        self.assertEqual(self.calculator.addition(-2, 0), -2)
+
+        self.assertEqual(self.calculator.addition(0, -2.2), -2.2)
+        self.assertEqual(self.calculator.addition(-2.2, 0), -2.2)
+
+        self.assertEqual(self.calculator.addition(0, math.inf), math.inf)
+        self.assertEqual(self.calculator.addition(math.inf, 0), math.inf)
+
         self.assertEqual(self.calculator.addition(0, 0), 0)
 
     def test_addition_string(self):
@@ -102,9 +119,39 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.multiplication(3, -2), -6)
         self.assertEqual(self.calculator.multiplication(-3, -2), 6)
 
+        self.assertAlmostEqual(
+            self.calculator.multiplication(-1.2, 2.1),
+            -2.52,
+        )
+        self.assertAlmostEqual(
+            self.calculator.multiplication(1.1, -2.2),
+            -2.42,
+        )
+        self.assertAlmostEqual(
+            self.calculator.multiplication(-1.1, -2.1),
+            2.31,
+        )
+
     def test_multiplication_zero(self):
         self.assertEqual(self.calculator.multiplication(0, 2), 0)
         self.assertEqual(self.calculator.multiplication(2, 0), 0)
+
+        self.assertAlmostEqual(self.calculator.multiplication(0, 2.2), 0)
+        self.assertAlmostEqual(self.calculator.multiplication(2.2, 0), 0)
+
+        self.assertEqual(self.calculator.multiplication(0, -2), 0)
+        self.assertEqual(self.calculator.multiplication(-2, 0), 0)
+
+        self.assertEqual(self.calculator.multiplication(0, -2.2), 0)
+        self.assertEqual(self.calculator.multiplication(-2.2, 0), 0)
+
+        self.assertTrue(math.isnan(
+            self.calculator.multiplication(0, math.inf)),
+        )
+        self.assertTrue(math.isnan(
+            self.calculator.multiplication(math.inf, 0)),
+        )
+
         self.assertEqual(self.calculator.multiplication(0, 0), 0)
 
     def test_multiplication_string(self):
@@ -145,6 +192,16 @@ class TestCalculator(unittest.TestCase):
         )
 
         self.assertEqual(
+            self.calculator.multiplication('string', 0),
+            '',
+        )
+
+        self.assertEqual(
+            self.calculator.multiplication(0, 'string'),
+            '',
+        )
+
+        self.assertEqual(
             self.calculator.multiplication([1, 2], 2),
             [1, 2, 1, 2],
         )
@@ -152,6 +209,16 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(
             self.calculator.multiplication(2, [1, 2]),
             [1, 2, 1, 2],
+        )
+
+        self.assertEqual(
+            self.calculator.multiplication([1, 2], 0),
+            [],
+        )
+
+        self.assertEqual(
+            self.calculator.multiplication(0, [1, 2]),
+            [],
         )
 
         with self.assertRaises(TypeError):
@@ -192,9 +259,26 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.subtraction(-5, 2), -7)
         self.assertEqual(self.calculator.subtraction(-5, -2), -3)
 
+        self.assertAlmostEqual(self.calculator.subtraction(-1.2, 2.1), -3.3)
+        self.assertAlmostEqual(self.calculator.subtraction(1.1, -2.2), 3.3)
+        self.assertAlmostEqual(self.calculator.subtraction(-1.1, -2.1), 1)
+
     def test_subtraction_zero(self):
         self.assertEqual(self.calculator.subtraction(0, 2), -2)
         self.assertEqual(self.calculator.subtraction(2, 0), 2)
+
+        self.assertAlmostEqual(self.calculator.subtraction(0, 2.2), -2.2)
+        self.assertAlmostEqual(self.calculator.subtraction(2.2, 0), 2.2)
+
+        self.assertEqual(self.calculator.subtraction(0, -2), 2)
+        self.assertEqual(self.calculator.subtraction(-2, 0), -2)
+
+        self.assertAlmostEqual(self.calculator.subtraction(0, -2.2), 2.2)
+        self.assertAlmostEqual(self.calculator.subtraction(-2.2, 0), -2.2)
+
+        self.assertEqual(self.calculator.subtraction(0, math.inf), -math.inf)
+        self.assertEqual(self.calculator.subtraction(math.inf, 0), math.inf)
+
         self.assertEqual(self.calculator.subtraction(0, 0), 0)
 
     def test_subtraction_string(self):
@@ -267,13 +351,31 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.division(-6, 2), -3)
         self.assertEqual(self.calculator.division(-6, -2), 3)
 
+        self.assertAlmostEqual(
+            self.calculator.division(-1.2, 2.1),
+            -0.5714285714,
+        )
+        self.assertAlmostEqual(
+            self.calculator.division(1.1, -2.2),
+            -0.5,
+        )
+        self.assertAlmostEqual(
+            self.calculator.division(-1.1, -2.1),
+            0.5238095238,
+        )
+
     def test_division_zero(self):
         self.assertEqual(self.calculator.division(0, 2), 0)
+        self.assertEqual(self.calculator.division(0, 2.2), 0)
+        self.assertEqual(self.calculator.division(0, -2), 0)
+        self.assertEqual(self.calculator.division(0, -2.2), 0)
+        self.assertEqual(self.calculator.division(0, math.inf), 0)
 
     def test_division_by_zero(self):
         self.assertIsNone(self.calculator.division(5, 0))
         self.assertIsNone(self.calculator.division(52.4, 0))
         self.assertIsNone(self.calculator.division(0, 0), 0)
+        self.assertEqual(self.calculator.subtraction(math.inf, 0), math.inf)
 
     def test_division_string(self):
         with self.assertRaises(TypeError):
@@ -373,9 +475,34 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.degree(-2, 2), 4)
         self.assertAlmostEqual(self.calculator.degree(2, -2), 0.25)
 
+        self.assertAlmostEqual(
+            self.calculator.degree(-1.2, 2.1),
+            (1.394719722540787+0.4531719085779955j),
+        )
+        self.assertAlmostEqual(self.calculator.degree(1.1, -2.2), 0.8108417320)
+        self.assertAlmostEqual(
+            self.calculator.degree(-1.1, -2.1),
+            (0.7785413551720506-0.2529634206272577j),
+        )
+
     def test_degree_zero(self):
         self.assertEqual(self.calculator.degree(0, 3), 0)
         self.assertEqual(self.calculator.degree(2, 0), 1)
+
+        self.assertAlmostEqual(self.calculator.degree(0, 2.2), 0)
+        self.assertAlmostEqual(self.calculator.degree(2.2, 0), 1)
+
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.degree(0, -2)
+        self.assertEqual(self.calculator.degree(-2, 0), 1)
+
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.degree(0, -2.2)
+        self.assertAlmostEqual(self.calculator.degree(-2.2, 0), 1)
+
+        self.assertEqual(self.calculator.degree(0, math.inf), 0)
+        self.assertEqual(self.calculator.degree(math.inf, 0), 1)
+
         self.assertEqual(self.calculator.degree(0, 0), 1)
 
     def test_degree_string(self):
@@ -443,6 +570,13 @@ class TestCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.calculator.ln(-10)
 
+        with self.assertRaises(ValueError):
+            self.calculator.ln(-10.2)
+
+    def test_ln_zero(self):
+        with self.assertRaises(ValueError):
+            self.calculator.ln(0)
+
     def test_ln_string(self):
         with self.assertRaises(TypeError):
             self.calculator.ln('string')
@@ -470,6 +604,55 @@ class TestCalculator(unittest.TestCase):
     def test_log_negative(self):
         with self.assertRaises(ValueError):
             self.calculator.log(-10, 2)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(10, -2)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(-10, -2)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(-1.2, 2.1)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(1.1, -2.2)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(-1.1, -2.1)
+
+    def test_log_zero(self):
+        with self.assertRaises(ValueError):
+            self.calculator.log(0, 2)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(2, 0)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(0, 2.2)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(2.2, 0)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(0, -2)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(-2, 0)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(0, -2.2)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(-2.2, 0)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(0, math.inf)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(math.inf, 0)
+
+        with self.assertRaises(ValueError):
+            self.calculator.log(0, 0)
 
     def test_log_string(self):
         with self.assertRaises(TypeError):
@@ -547,6 +730,14 @@ class TestCalculator(unittest.TestCase):
             (8.659560562354934e-17+1.4142135623730951j),
         )
 
+        self.assertAlmostEqual(
+            self.calculator.sqrt(-2.2),
+            (9.082223739063148e-17+1.4832396974191326j),
+        )
+
+    def test_sqrt_zero(self):
+        self.assertEqual(self.calculator.sqrt(0), 0)
+
     def test_sqrt_string(self):
         with self.assertRaises(TypeError):
             self.calculator.sqrt('string')
@@ -589,9 +780,56 @@ class TestCalculator(unittest.TestCase):
 
     def test_nth_root_negative(self):
         self.assertAlmostEqual(
-            self.calculator.nth_root(-2, 3),
-            (0.6299605249474367+1.0911236359717214j),
+            self.calculator.nth_root(5, -2),
+            0.4472135954999579,
         )
+        self.assertAlmostEqual(
+            self.calculator.nth_root(-5, 2),
+            (1.3691967456605067e-16+2.23606797749979j),
+        )
+        self.assertAlmostEqual(
+            self.calculator.nth_root(-5, -2),
+            (2.738393491321013e-17-0.4472135954999579j),
+        )
+
+        self.assertAlmostEqual(
+            self.calculator.nth_root(-1.2, 2.1),
+            (0.08150812098075119+1.08765028708426j),
+        )
+        self.assertAlmostEqual(self.calculator.nth_root(
+            1.1, -2.2),
+            0.9576022175517517,
+        )
+        self.assertAlmostEqual(
+            self.calculator.nth_root(-1.1, -2.1),
+            (0.0714142243692801-0.9529565974842009j),
+        )
+
+    def test_nth_root_zero(self):
+        self.assertEqual(self.calculator.nth_root(0, 2), 0)
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.nth_root(2, 0)
+
+        self.assertAlmostEqual(self.calculator.nth_root(0, 2.2), 0)
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.nth_root(2.2, 0)
+
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.nth_root(0, -2)
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.nth_root(-2, 0)
+
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.nth_root(0, -2.2)
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.nth_root(-2.2, 0)
+
+        self.assertEqual(self.calculator.nth_root(0, math.inf), 1)
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.nth_root(math.inf, 0)
+
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.nth_root(0, 0)
 
     def test_nth_root_string(self):
         with self.assertRaises(TypeError):
