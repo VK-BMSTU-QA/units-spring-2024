@@ -34,7 +34,7 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.multiplication(323.85, 47.8), 15480.03)
         self.assertEqual(self.calculator.multiplication(math.inf, 100), math.inf)
         self.assertEqual(self.calculator.multiplication(math.inf, -2), -math.inf)
-        self.assertEqual(self.calculator.multiplication(math.inf, 0), math.nan)
+        self.assertIsNone(self.calculator.multiplication(math.inf, 0))
 
     def test_subtract(self):
         self.assertEqual(self.calculator.subtraction(1, 2), -1)
@@ -46,7 +46,7 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.subtraction(323.85, 35), 288.85)
         self.assertAlmostEqual(self.calculator.subtraction(12.543, 9.5), 3.043)
         self.assertEqual(self.calculator.subtraction(math.inf, 100), math.inf)
-        self.assertEqual(self.calculator.subtraction(math.inf, math.inf), math.nan)
+        self.assertIsNone(self.calculator.subtraction(math.inf, math.inf))
 
     def test_div(self):
         self.assertIsNone(self.calculator.division(1, 0), 0)
@@ -79,6 +79,8 @@ class TestCalculator(unittest.TestCase):
         self.assertRaises(ValueError, self.calculator.ln, -1)
         self.assertRaises(ValueError, self.calculator.ln, 0)
         self.assertAlmostEqual(self.calculator.ln(math.e ** 2), 2)
+        self.assertEqual(self.calculator.ln(math.inf), math.inf)
+        self.assertRaises(ValueError, self.calculator.ln, -math.inf)
         self.assertRaises(TypeError, self.calculator.ln, [1, 2], [1, 2, 1, 2])
         self.assertRaises(TypeError, self.calculator.ln, "test", "python")
 
