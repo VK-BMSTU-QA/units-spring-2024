@@ -10,7 +10,6 @@ export const useCurrentTime = () => {
             () => setCurrentTime(new Date().toLocaleTimeString('ru-RU')),
             1000
         );
-
         return () => clearInterval(interval);
     });
 
