@@ -19,7 +19,7 @@ describe('ProductCards test', () => {
             description: 'This is a test description',
             price: 100,
             priceSymbol: '$',
-            imgUrl: 'test-image-url.jpg',
+            imgUrl: '/test-image-url.jpg',
             category: 'Для дома',
         };
         const rendered = render(<ProductCard {...testProduct} />);
