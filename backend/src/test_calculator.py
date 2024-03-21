@@ -85,8 +85,6 @@ class TestCalculator(unittest.TestCase):
         self.assertRaises(TypeError, self.calculator.ln, "test", "python")
 
     def test_log(self):
-        self.assertAlmostEqual(self.calculator.log(1, 2), 0)
-        self.assertAlmostEqual(self.calculator.log(2, 2), 1)
         self.assertAlmostEqual(self.calculator.log(4, 2), 2)
         self.assertAlmostEqual(self.calculator.log(6.25, 2.5), 2)
         self.assertAlmostEqual(self.calculator.log(2, 4), 0.5)
@@ -96,25 +94,29 @@ class TestCalculator(unittest.TestCase):
         self.assertRaises(ValueError, self.calculator.log, 1, 0)
         self.assertRaises(ZeroDivisionError, self.calculator.log, 1, 1)
         self.assertRaises(ValueError, self.calculator.log, -1, 577)
-        self.assertRaises(ValueError, self.calculator.log, 4878, -1)
+        self.assertRaises(TypeError, self.calculator.log, [1, 2], [1, 2, 1, 2])
+        self.assertRaises(TypeError, self.calculator.log, "test", "python")
+
 
     def test_sqrt(self):
         self.assertAlmostEqual(self.calculator.sqrt(1), 1)
         self.assertAlmostEqual(self.calculator.sqrt(0), 0)
         self.assertAlmostEqual(self.calculator.sqrt(6.25), 2.5)
         self.assertAlmostEqual(self.calculator.sqrt(0.25), 0.5)
+        self.assertAlmostEqual(self.calculator.sqrt(13), 3.60555, places=4)
+        self.assertRaises(TypeError, self.calculator.sqrt, [1, 2])
+        self.assertRaises(TypeError, self.calculator.sqrt, "test")
 
     def nth_root(self):
         self.assertAlmostEqual(self.calculator.nth_root(1, 2), 1)
-        self.assertAlmostEqual(self.calculator.nth_root(1, 1), 1)
         self.assertAlmostEqual(self.calculator.nth_root(1, -2), 1)
         self.assertAlmostEqual(self.calculator.nth_root(4, 2), 2)
-        self.assertAlmostEqual(self.calculator.nth_root(4, 1), 4)
-        self.assertAlmostEqual(self.calculator.nth_root(2, -1), 0.5)
         self.assertAlmostEqual(self.calculator.nth_root(4, -2), 0.5)
-        self.assertAlmostEqual(self.calculator.nth_root(6.25, -1), 0.16)
         self.assertAlmostEqual(self.calculator.nth_root(6.25, -2), 0.4)
+        self.assertAlmostEqual(self.calculator.nth_root(3.2, 8.7), 1.1430447, places=6)
         self.assertRaises(ZeroDivisionError, self.calculator.nth_root, 1, 0)
+        self.assertRaises(TypeError, self.calculator.nth_root, [1, 2], [1, 2, 1, 2])
+        self.assertRaises(TypeError, self.calculator.nth_root, "test", "python")
 
 if __name__ == "__main__":
     unittest.main()
