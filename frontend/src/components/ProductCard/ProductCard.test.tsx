@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { ProductCard } from './ProductCard';
 import { Product } from '../../types/Product';
 import { getPrice } from '../../utils';
@@ -19,6 +20,7 @@ describe('Categories test', () => {
              />);
 
         expect(rendered.asFragment()).toMatchSnapshot();
+        expect(rendered.container.getElementsByTagName('img')).toHaveLength(0);
     });
     it('should render correctly with a picture', () => {
         const rendered = render(<ProductCard
@@ -28,6 +30,7 @@ describe('Categories test', () => {
              />);
 
         expect(rendered.asFragment()).toMatchSnapshot();
+        expect(rendered.container.getElementsByTagName('img')[0]).toHaveAttribute('src', 'https://picsum.photos/200/300');
     });
     it('should call getPrice when rendering', () => {
         expect(getPrice).toHaveBeenCalledTimes(0);

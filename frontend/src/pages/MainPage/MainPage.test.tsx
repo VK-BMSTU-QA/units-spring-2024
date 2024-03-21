@@ -1,4 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { MainPage } from './MainPage';
 import { updateCategories } from '../../utils';
 
@@ -15,7 +16,7 @@ jest.mock('../../utils/updateCategories', () => ({
 
 beforeAll(() => {
     jest.useFakeTimers();
-    jest.setSystemTime(new Date(testDate + " " +testTime));
+    jest.setSystemTime(new Date(`${testDate} ${testTime}`));
 });
 
 afterEach(jest.clearAllMocks);
@@ -38,7 +39,7 @@ describe('MainPage test', () => {
     it('should render time', () => {
         const rendered = render(<MainPage />);
         
-        expect(rendered.queryByText(testTime)?.textContent).toEqual(testTime);
+        expect(rendered.queryByText(testTime)).toBeInTheDocument();
     });
     it('should render the correct amount of products', () => {
         const rendered = render(<MainPage />);

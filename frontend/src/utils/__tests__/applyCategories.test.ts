@@ -28,7 +28,7 @@ describe('test apply categories function', () => {
             []
         );
     });
-    it('should return all products if no categories are orovided', () => {
+    it('should return all products if no categories are provided', () => {
         expect(applyCategories(
             testData,
             [])

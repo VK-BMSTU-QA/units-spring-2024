@@ -6,7 +6,7 @@ const testTime = "20:00:00";
 
 beforeAll(() => {
     jest.useFakeTimers();
-    jest.setSystemTime(new Date(testDate + " " + testTime))
+    jest.setSystemTime(new Date(`${testDate} ${testTime}`))
 });
 
 afterAll(() => {
