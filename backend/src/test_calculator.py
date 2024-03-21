@@ -600,6 +600,11 @@ class TestCalculator(unittest.TestCase):
     def test_log(self):
         self.assertAlmostEqual(self.calculator.log(10, 2), 3.3219280948873626)
         self.assertAlmostEqual(self.calculator.log(5.5, 2), 2.4594316186372973)
+        self.assertAlmostEqual(self.calculator.log(5, 2.2), 2.041249144646876)
+        self.assertAlmostEqual(
+            self.calculator.log(5.5, 2.2),
+            2.1621309888601017,
+        )
 
     def test_log_negative(self):
         with self.assertRaises(ValueError):
@@ -773,8 +778,8 @@ class TestCalculator(unittest.TestCase):
             1.1455801751628705
         )
 
-        self.assertAlmostEqual(self.calculator.nth_root(
-            2.5, 5.1),
+        self.assertAlmostEqual(
+            self.calculator.nth_root(2.5, 5.1),
             1.1968161822205403,
         )
 
