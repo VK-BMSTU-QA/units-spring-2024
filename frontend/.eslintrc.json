@@ -30,6 +30,6 @@
       "error",
       "single"
     ],
-    "prettier/prettier": 0
+    "prettier/prettier": "error"
   }
 }
