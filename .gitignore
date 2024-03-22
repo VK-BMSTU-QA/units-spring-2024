@@ -25,6 +25,7 @@ dist-ssr
 *.sw?
 .pytest_cache
 .vscode
+*.coverage
 
 *__pycache__
 
